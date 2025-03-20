@@ -5,12 +5,15 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_cliente from "./routes/api/cliente.ts";
-import * as $api_login from "./routes/api/login.ts";
+import * as $api_login from "./routes/api/session.ts";
+import * as $api_registro from "./routes/api/registro.ts";
 import * as $dashboard from "./routes/dashboard.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
+import * as $register from "./routes/register.tsx";
 import * as $CataContainer from "./islands/CataContainer.tsx";
 import * as $Footer from "./islands/Footer.tsx";
+import * as $FormRegister from "./islands/FormRegister.tsx";
 import * as $Login from "./islands/Login.tsx";
 import * as $NavBar from "./islands/NavBar.tsx";
 import * as $PagInicio_ContMain from "./islands/PagInicio/ContMain.tsx";
@@ -22,13 +25,16 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/api/cliente.ts": $api_cliente,
     "./routes/api/login.ts": $api_login,
+    "./routes/api/registro.ts": $api_registro,
     "./routes/dashboard.tsx": $dashboard,
     "./routes/index.tsx": $index,
     "./routes/login.tsx": $login,
+    "./routes/register.tsx": $register,
   },
   islands: {
     "./islands/CataContainer.tsx": $CataContainer,
     "./islands/Footer.tsx": $Footer,
+    "./islands/FormRegister.tsx": $FormRegister,
     "./islands/Login.tsx": $Login,
     "./islands/NavBar.tsx": $NavBar,
     "./islands/PagInicio/ContMain.tsx": $PagInicio_ContMain,

@@ -8,7 +8,7 @@ export default function Login() {
   async function handleSubmit(e: Event) {
     e.preventDefault();
     
-    const res = await fetch("/api/login", {
+    const res = await fetch("/api/session", {
       method: "POST",
       body: new URLSearchParams({ ci, pass }),
     });
