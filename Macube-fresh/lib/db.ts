@@ -1,6 +1,7 @@
-import { Client } from "pg";
 
-const client = new Client({
+import { Client } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
+
+const db = new Client({
   user: "root",
   password: "1234",
   database: "macube",
@@ -8,6 +9,6 @@ const client = new Client({
   port: 5432,
 });
 
-await client.connect();
+await db.connect();
 
-export { client };
+export default db;

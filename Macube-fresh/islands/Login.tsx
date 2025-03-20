@@ -1,7 +1,7 @@
 import { useState } from "preact/hooks";
 
 export default function Login() {  
-  const [correo, setCorreo] = useState("");
+  const [ci, setci] = useState("");
   const [pass, setPass] = useState("");
   const [mensaje, setMensaje] = useState("");
 
@@ -10,7 +10,7 @@ export default function Login() {
     
     const res = await fetch("/api/login", {
       method: "POST",
-      body: new URLSearchParams({ correo, pass }),
+      body: new URLSearchParams({ ci, pass }),
     });
 
     const data = await res.json();
@@ -26,10 +26,10 @@ export default function Login() {
   return (
     <form onSubmit={handleSubmit} class="flex flex-col gap-2">
       <input
-        type="email"
-        value={correo}
-        onInput={(e) => setCorreo(e.currentTarget.value)}
-        placeholder="Correo"
+        type="number"
+        value={ci}
+        onInput={(e) => setci(e.currentTarget.value)}
+        placeholder="ci"
         required
       />
       <input
