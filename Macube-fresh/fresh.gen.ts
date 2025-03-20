@@ -6,11 +6,16 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_cliente from "./routes/api/cliente.ts";
 import * as $api_joke from "./routes/api/joke.ts";
+<<<<<<< HEAD
 import * as $api_login from "./routes/api/login.ts";
 import * as $dashboard from "./routes/dashboard.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $Login from "./islands/Login.tsx";
+=======
+import * as $index from "./routes/index.tsx";
+
+>>>>>>> fd381c0cd781c5633e4c5b24d0f9b701db438664
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -19,14 +24,21 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/api/cliente.ts": $api_cliente,
     "./routes/api/joke.ts": $api_joke,
+<<<<<<< HEAD
     "./routes/api/login.ts": $api_login,
     "./routes/dashboard.tsx": $dashboard,
+=======
+>>>>>>> fd381c0cd781c5633e4c5b24d0f9b701db438664
     "./routes/index.tsx": $index,
     "./routes/login.tsx": $login,
   },
+<<<<<<< HEAD
   islands: {
     "./islands/Login.tsx": $Login,
   },
+=======
+  islands: {},
+>>>>>>> fd381c0cd781c5633e4c5b24d0f9b701db438664
   baseUrl: import.meta.url,
 } satisfies Manifest;
 
