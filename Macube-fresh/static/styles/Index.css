@@ -1,0 +1,83 @@
+*{
+    @apply
+        font-mono
+}
+
+.Index{
+    @apply
+        -z-10
+        h-screen w-screen
+        bg-gradient-to-r from-[#D2C7CB] to-[#E6DBDF]
+}
+
+.Body{
+    @apply
+        -z-20
+        h-full w-full
+        bg-[url(/images/fondo4k.webp)] bg-cover bg-no-repeat
+}
+
+.Body1{
+    @apply
+        -z-20
+        h-full w-full
+        bg-gradient-to-r from-[#D2C7CB] to-[#E6DBDF]
+}
+
+
+/*componentes internos*/
+
+.ArticlePres{
+    @apply
+        h-full
+        text-center
+        flex flex-col justify-center align-middle items-start 
+}
+
+.ArticlePres #ContTitle{
+    @apply
+        mt-5 mb-5 ml-52
+}
+
+.ArticlePres #ContText{
+    @apply
+        w-1/3
+        ml-52
+        text-left
+        mt-5 mb-5
+}
+
+
+.ArticleMid{
+    @apply
+        w-full
+        h-1/2
+        text-center
+        flex flex-col justify-center align-top items-center
+}
+
+.ArticleMid #ContText{
+    @apply
+        w-1/2
+}
+
+.ArticleEnd{
+    @apply
+        h-full
+        text-center
+        flex flex-col justify-center align-middle items-start 
+}
+
+.ArticleEnd #ContTitle{
+    @apply
+        mt-5 mb-5 ml-52
+}   
+
+.ArticleEnd #ContText{
+    @apply
+        w-1/3
+        ml-52
+        text-left
+        mt-5 mb-5
+}
+

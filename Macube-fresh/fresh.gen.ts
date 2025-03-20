@@ -4,19 +4,29 @@
 
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
-import * as $api_joke from "./routes/api/joke.ts";
+import * as $api_Login from "./routes/api/Login.ts";
+import * as $api_Middleware from "./routes/api/Middleware.ts";
 import * as $index from "./routes/index.tsx";
-
+import * as $CataContainer from "./islands/CataContainer.tsx";
+import * as $Footer from "./islands/Footer.tsx";
+import * as $NavBar from "./islands/NavBar.tsx";
+import * as $PagInicio_ContMain from "./islands/PagInicio/ContMain.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
-    "./routes/api/joke.ts": $api_joke,
+    "./routes/api/Login.ts": $api_Login,
+    "./routes/api/Middleware.ts": $api_Middleware,
     "./routes/index.tsx": $index,
   },
-  islands: {},
+  islands: {
+    "./islands/CataContainer.tsx": $CataContainer,
+    "./islands/Footer.tsx": $Footer,
+    "./islands/NavBar.tsx": $NavBar,
+    "./islands/PagInicio/ContMain.tsx": $PagInicio_ContMain,
+  },
   baseUrl: import.meta.url,
 } satisfies Manifest;
 

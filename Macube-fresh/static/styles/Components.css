@@ -1,0 +1,45 @@
+.NavBar{
+    @apply
+        w-full
+        flex justify-center align-middle items-center
+}
+
+.NavMain{
+    @apply
+        w-3/4
+        mt-5
+        p-10 
+        flex flex-row justify-between align-middle
+        bg-white/40 rounded-3xl
+        shadow-xl
+}
+
+.NavCont2{
+    @apply
+        w-1/5
+        flex justify-between
+}
+
+/*FOOTER*/
+
+.Footer{
+    @apply
+        w-full
+        pl-10 pr-10
+        flex flex-row justify-between
+}
+
+.Footer-l{
+    @apply
+        m-5
+}
+
+.Footer-r{
+    @apply
+        m-5
+}
+
+.Footer-r a{
+    @apply
+        pl-5 pr-5
+}
