@@ -1,12 +1,29 @@
+import { Handlers, PageProps } from "$fresh/server.ts";
+import { getCookies } from "$std/http/cookie.ts";
 import Footer from "../islands/Footer.tsx";
 import NavBar from "../islands/NavBar.tsx";
 import ContMain from "../islands/PagInicio/ContMain.tsx";
 
-export default function Home() {
+
+interface Data{
+  isAllowed:boolean;
+} 
+
+export const handler: Handlers = {
+  GET(req, ctx){
+    const cookies = getCookies(req.headers);
+    return ctx.render({ isAllowed: cookies.auth === "bar" });
+  },
+};
+
+export default function Home( { data } : PageProps<Data> ) {
+
+  const session = data.isAllowed;
+
   return (
     <div class="Index">
       <div class="Body">
-        <NavBar />
+        <NavBar isAllowed={session} />
 
         <ContMain
           Title="MACUBE" 
