@@ -17,7 +17,7 @@ export default function Login() {
 
     if (data.success) {
       setMensaje("✅ Login exitoso");
-      setTimeout(() => window.location.href = "/dashboard", 1000);
+      setTimeout(() => globalThis.location.href = "/", 1000);
     } else {
       setMensaje(`❌ ${data.error}`);
     }

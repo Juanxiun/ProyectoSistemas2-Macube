@@ -4,33 +4,51 @@ import Footer from "../islands/Footer.tsx";
 import NavBar from "../islands/NavBar.tsx";
 import ContMain from "../islands/PagInicio/ContMain.tsx";
 
-interface Data{
-  isAllowed:boolean;
+interface Data {
+  isAllowed: boolean;
   userdata: number;
-} 
-
+}
 
 export const handler: Handlers = {
-  GET(req, ctx){
-
+  GET(req, ctx) {
     const cookies = getCookies(req.headers);
 
+    let userdata = 0;
+    let isAllowed = false;
 
-    return ctx.render({ isAllowed: cookies.auth === "bar" });
+    if (cookies.auth) {
+      try {
+        
+        const decodedAuth = decodeURIComponent(cookies.auth); 
+        const authData = JSON.parse(decodedAuth);
+
+        if (authData && authData.ci) {
+          userdata = authData.ci;
+          isAllowed = true; 
+        }
+      } catch (error) {
+        console.log("Error parsing auth cookie:", error);
+      }
+    }
+
+    return ctx.render({
+      isAllowed,
+      userdata,
+    });
   },
 };
-
-export default function Home( { data } : PageProps<Data>) {
-
+export default function Home({ data }: PageProps<Data>) {
   const session = data.isAllowed;
-  console.log(data.userdata)
+  const userdata = data.userdata;
+  console.log(userdata);
+  
   return (
     <div class="Index">
       <div class="Body">
-        <NavBar isAllowed={session} />
+        <NavBar isAllowed={session} ci={userdata} />
 
         <ContMain
-          Title="MACUBE" 
+          Title="MACUBE"
           Title2="DISEÑO Y ARTE"
           Text=" transformaremos tu sueño 
                   en un proyecto REAL combinando
@@ -57,7 +75,7 @@ export default function Home( { data } : PageProps<Data>) {
           Style="ArticleEnd"
         />
 
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );

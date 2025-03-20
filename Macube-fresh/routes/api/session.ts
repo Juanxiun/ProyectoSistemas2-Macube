@@ -24,10 +24,12 @@ export const handler: Handlers = {
       if (result.rows.length > 0) {
         const headers = new Headers();
 
+        const encodedCi = encodeURIComponent(JSON.stringify({ ci }));
+
         setCookie(headers, {
           name: "auth",
-          value: JSON.stringify({ ci }),
-          maxAge: 60 * 60 * 24,
+          value: encodedCi,  
+          maxAge: 60 * 60 * 24, 
           sameSite: "Lax",
           domain: url.hostname,
           path: "/",
@@ -36,7 +38,8 @@ export const handler: Handlers = {
 
         return new Response(
           JSON.stringify({ success: true, message: "Login exitoso" }),
-          { status: 200 },
+          { status: 200, headers },
+          
         );
       } else {
         return new Response(
@@ -48,6 +51,7 @@ export const handler: Handlers = {
         );
       }
     } catch (_error) {
+      console.log(_error);
       return new Response(
         JSON.stringify({ error: "Error interno del servidor\n", _error }),
         { status: 500 },

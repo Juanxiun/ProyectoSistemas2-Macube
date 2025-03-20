@@ -1,11 +1,13 @@
 import { HandlerContext } from "$fresh/server.ts";
 import {db} from "../../lib/database/connect.ts";
+import { setCookie } from "$std/http/cookie.ts";
 
 export const handler = async (req: Request, _ctx: HandlerContext): Promise<Response> => {
   if (req.method !== "POST") {
     return new Response("Método no permitido", { status: 405 });
   }
 
+  const url = new URL(req.url);
   const formData = await req.formData();
   const ci = formData.get("ci");
   const extension = formData.get("extension");
@@ -36,6 +38,18 @@ export const handler = async (req: Request, _ctx: HandlerContext): Promise<Respo
       pass,
       null,
     ]);
+
+    const headers = new Headers();
+
+    setCookie(headers, {
+      name: "auth",
+      value: JSON.stringify({ ci }),
+      maxAge: 60 * 60 * 24,
+      sameSite: "Lax",
+      domain: url.hostname,
+      path: "/",
+      secure: true,
+    });
 
     return new Response("Registro exitoso", { status: 200 });
   } catch (error) {
