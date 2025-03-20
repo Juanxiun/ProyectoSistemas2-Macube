@@ -3,6 +3,7 @@ interface Data {
 }
 
 export default function NavBar({ isAllowed }: Data) {
+
   return (
     <nav class="NavBar">
       <div class="NavMain">
@@ -20,7 +21,7 @@ export default function NavBar({ isAllowed }: Data) {
 
         <div class="NavCont2">
           <a href="">CREAR UNA CITA</a>
-          <a href="">INCIAR SESION</a>
+          <a href="/login">INCIAR SESION</a>
         </div>
       </div>
     </nav>

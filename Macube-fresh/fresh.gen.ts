@@ -5,8 +5,8 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_cliente from "./routes/api/cliente.ts";
-import * as $api_login from "./routes/api/login.tsx";
-import * as $api_session from "./routes/api/session.ts";
+import * as $api_login from "./routes/api/login.ts";
+import * as $api_middleware from "./routes/api/middleware.ts";
 import * as $dashboard from "./routes/dashboard.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
@@ -22,8 +22,8 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/api/cliente.ts": $api_cliente,
-    "./routes/api/login.tsx": $api_login,
-    "./routes/api/session.ts": $api_session,
+    "./routes/api/login.ts": $api_login,
+    "./routes/api/middleware.ts": $api_middleware,
     "./routes/dashboard.tsx": $dashboard,
     "./routes/index.tsx": $index,
     "./routes/login.tsx": $login,

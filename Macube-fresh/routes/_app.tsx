@@ -1,4 +1,6 @@
 import { type PageProps } from "$fresh/server.ts";
+import {} from "./api/middleware.ts"
+
 export default function App({ Component }: PageProps) {
   return (
     <html>
