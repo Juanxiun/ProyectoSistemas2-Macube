@@ -1,7 +1,13 @@
-export default function CataContainer(){
-    return(
-        <section>
+export default function CataContainer() {
+  return (
+    <section>
+        <img src="" alt="" />
+        <p>
             
-        </section>
-    );
+        </p>
+        <p>
+
+        </p>
+    </section>
+  );
 }

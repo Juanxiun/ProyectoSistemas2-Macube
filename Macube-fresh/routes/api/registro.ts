@@ -1,59 +1,82 @@
-import { HandlerContext } from "$fresh/server.ts";
-import {db} from "../../lib/database/connect.ts";
+import { Handlers } from "$fresh/server.ts";
+import { db } from "../../lib/database/connect.ts";
 import { setCookie } from "$std/http/cookie.ts";
+import { ValRegister } from "../../lib/utils/validacion.ts";
 
-export const handler = async (req: Request, _ctx: HandlerContext): Promise<Response> => {
-  if (req.method !== "POST") {
-    return new Response("Método no permitido", { status: 405 });
-  }
+export const handler: Handlers = {
+  async POST(req) {
+    const url = new URL(req.url);
+    const formData = await req.formData();
+    const ci = formData.get("ci")?.toString();
+    const extension = formData.get("extension")?.toString();
+    const nombres = formData.get("nombres")?.toString();
+    const apellidos = formData.get("apellidos")?.toString();
+    const telefono = formData.get("telefono")?.toString();
+    const telefono2 = formData.get("telefono2")?.toString();
+    const correo = formData.get("correo")?.toString();
+    const pass = formData.get("pass")?.toString();
 
-  const url = new URL(req.url);
-  const formData = await req.formData();
-  const ci = formData.get("ci");
-  const extension = formData.get("extension");
-  const nombres = formData.get("nombres");
-  const apellidos = formData.get("apellidos");
-  const telefono = formData.get("telefono");
-  const telefono2 = formData.get("telefono2");
-  const correo = formData.get("correo");
-  const pass = formData.get("pass");
+    const valReg = await ValRegister({
+      ci: ci ? parseInt(ci) : undefined,
+      extension: extension,
+      nombres: nombres,
+      apellidos: apellidos,
+      telefono1: telefono ? parseInt(telefono) : undefined,
+      telefono2: telefono2 ? parseInt(telefono2) : undefined,
+      correo: correo,
+      pass: pass,
+    });
 
-  if (!ci || !extension || !nombres || !apellidos || !telefono || !pass) {
-    return new Response("Faltan campos obligatorios", { status: 400 });
-  }
+    if (valReg !== "Validacion exitosa") {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: ValRegister,
+        }),
+        { status: 401, headers: { "Content-type": "application/json" } },
+      );
+    }
 
-  try {
-    const query = `
+    try {
+      const query = `
       INSERT INTO clientes (CI, EXTENSION, NOMBRES, APELLIDOS, TELEFONO, TELEFONO2, CORREO, PASS, REFERENCIA, HABILITADO)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 1)
     `;
-    await db.queryObject(query, [
-      ci,
-      extension,
-      nombres,
-      apellidos,
-      telefono,
-      telefono2 || null, 
-      correo || null,    
-      pass,
-      null,
-    ]);
+      await db.queryObject(query, [
+        ci,
+        extension,
+        nombres,
+        apellidos,
+        telefono,
+        telefono2 || null,
+        correo || null,
+        pass,
+        null,
+      ]);
 
-    const headers = new Headers();
+      const headers = new Headers();
+      const encodedCi = encodeURIComponent(JSON.stringify({ ci }));
 
-    setCookie(headers, {
-      name: "auth",
-      value: JSON.stringify({ ci }),
-      maxAge: 60 * 60 * 24,
-      sameSite: "Lax",
-      domain: url.hostname,
-      path: "/",
-      secure: true,
-    });
+      setCookie(headers, {
+        name: "auth",
+        value: encodedCi,
+        maxAge: 60 * 60 * 24,
+        sameSite: "Lax",
+        domain: url.hostname,
+        path: "/",
+        secure: true,
+      });
 
-    return new Response("Registro exitoso", { status: 200 });
-  } catch (error) {
-    console.error("Error al insertar en la base de datos:", error);
-    return new Response("Error interno del servidor", { status: 500 });
-  }
+      return new Response(
+        JSON.stringify({ success: true, message: "REGISTRO exitoso" }),
+        { status: 200, headers },
+      );
+    } catch (error) {
+      console.error(error);
+      return new Response(
+        JSON.stringify({ error: "Error interno del servidor" }),
+        { status: 500, headers: { "Content-Type": "application/json" } },
+      );
+    }
+  },
 };
