@@ -1,3 +1,4 @@
+
 interface Data {
   isAllowed: boolean;
 }

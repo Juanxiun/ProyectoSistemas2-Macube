@@ -1,7 +1,8 @@
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
 import { getCookies } from "$std/http/cookie.ts";
 
-export default async function handler(
+
+export default async function authMiddleware(
   req: Request,
   ctx: MiddlewareHandlerContext,
 ) {

@@ -4,22 +4,26 @@ import Footer from "../islands/Footer.tsx";
 import NavBar from "../islands/NavBar.tsx";
 import ContMain from "../islands/PagInicio/ContMain.tsx";
 
-
 interface Data{
   isAllowed:boolean;
+  userdata: number;
 } 
+
 
 export const handler: Handlers = {
   GET(req, ctx){
+
     const cookies = getCookies(req.headers);
+
+
     return ctx.render({ isAllowed: cookies.auth === "bar" });
   },
 };
 
-export default function Home( { data } : PageProps<Data> ) {
+export default function Home( { data } : PageProps<Data>) {
 
   const session = data.isAllowed;
-
+  console.log(data.userdata)
   return (
     <div class="Index">
       <div class="Body">
