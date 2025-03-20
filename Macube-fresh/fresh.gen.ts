@@ -4,24 +4,34 @@
 
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
+import * as $api_cliente from "./routes/api/cliente.ts";
 import * as $api_joke from "./routes/api/joke.ts";
+import * as $api_login from "./routes/api/login.ts";
 import * as $api_registro from "./routes/api/registro.ts";
+import * as $dashboard from "./routes/dashboard.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $login from "./routes/login.tsx";
 import * as $register from "./routes/register.tsx";
 import * as $FormRegister from "./islands/FormRegister.tsx";
+import * as $Login from "./islands/Login.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
+    "./routes/api/cliente.ts": $api_cliente,
     "./routes/api/joke.ts": $api_joke,
+    "./routes/api/login.ts": $api_login,
     "./routes/api/registro.ts": $api_registro,
+    "./routes/dashboard.tsx": $dashboard,
     "./routes/index.tsx": $index,
+    "./routes/login.tsx": $login,
     "./routes/register.tsx": $register,
   },
   islands: {
     "./islands/FormRegister.tsx": $FormRegister,
+    "./islands/Login.tsx": $Login,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
