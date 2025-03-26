@@ -21,7 +21,7 @@ export async function Middleware(codigo: number): Promise<DataUser[]> {
       return datox;
     } else {
       const result = await db.queryObject(
-        "SELECT nombres FROM arquitectos WHERE codigo = $1 ",
+        "SELECT codigo, nombres, apellidos FROM arquitectos WHERE codigo = $1 ",
         [codigo],
       );
 
