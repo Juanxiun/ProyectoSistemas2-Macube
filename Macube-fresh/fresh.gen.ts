@@ -12,6 +12,7 @@ import * as $dashboard from "./routes/dashboard.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $logout from "./routes/logout.ts";
+import * as $proyecto_inicio from "./routes/proyecto/inicio.tsx";
 import * as $register from "./routes/register.tsx";
 import * as $CataContainer from "./islands/CataContainer.tsx";
 import * as $Footer from "./islands/Footer.tsx";
@@ -19,6 +20,7 @@ import * as $FormRegister from "./islands/FormRegister.tsx";
 import * as $Login from "./islands/Login.tsx";
 import * as $NavBar from "./islands/NavBar.tsx";
 import * as $PagInicio_ContMain from "./islands/PagInicio/ContMain.tsx";
+import * as $SiderBar from "./islands/SiderBar.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -33,6 +35,7 @@ const manifest = {
     "./routes/index.tsx": $index,
     "./routes/login.tsx": $login,
     "./routes/logout.ts": $logout,
+    "./routes/proyecto/inicio.tsx": $proyecto_inicio,
     "./routes/register.tsx": $register,
   },
   islands: {
@@ -42,6 +45,7 @@ const manifest = {
     "./islands/Login.tsx": $Login,
     "./islands/NavBar.tsx": $NavBar,
     "./islands/PagInicio/ContMain.tsx": $PagInicio_ContMain,
+    "./islands/SiderBar.tsx": $SiderBar,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

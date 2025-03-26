@@ -1,22 +1,49 @@
-import { MiddlewareHandlerContext } from "$fresh/server.ts";
-import { getCookies } from "$std/http/cookie.ts";
+import { db } from "../../lib/database/connect.ts";
+import DataUser from "../../lib/database/models/DataUser.ts";
 
 
-export default async function authMiddleware(
-  req: Request,
-  ctx: MiddlewareHandlerContext,
-) {
-  const cookies = getCookies(req.headers);
+export async function Middleware(codigo: number): Promise<DataUser[]> {
+  try {
 
-  if (cookies.auth) {
-    try {
-      ctx.state.user = JSON.parse(cookies.auth);
-    } catch (error) {
-      console.log(error);
-      ctx.state.user = null;
+    const result = await db.queryObject(
+      "SELECT ci, nombres, apellidos FROM clientes WHERE ci = $1 ",
+      [codigo],
+    );
+    if (result) {
+      // deno-lint-ignore no-explicit-any
+      const datox: DataUser[] = result.rows.map((row: any) => ({
+        codigo: row.ci,
+        nombres: row.nombres,
+        apellidos: row.apellidos,
+        rol: 'cli',
+      }));
+
+      return datox;
+    } else {
+      const result = await db.queryObject(
+        "SELECT nombres FROM arquitectos WHERE codigo = $1 ",
+        [codigo],
+      );
+
+      if (result) {
+        // deno-lint-ignore no-explicit-any
+        const datox: DataUser[] = result.rows.map((row: any) => ({
+          codigo: row.codigo,
+          nombres: row.nombres,
+          apellidos: row.apellidos,
+          rol: 'arq',
+        }));
+
+        return datox;
+
+      } else {
+        const datox: DataUser[] = [];
+
+        return datox;
+      }
     }
-  } else {
-    ctx.state.user = null;
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
-  return await ctx.next();
 }

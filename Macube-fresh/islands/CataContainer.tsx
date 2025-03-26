@@ -1,13 +1,20 @@
-export default function CataContainer() {
-  return (
-    <section>
-        <img src="" alt="" />
-        <p>
-            
-        </p>
-        <p>
+interface ProjData {
+  img: string;
+  title: string;
+  arq: string;
+}
 
-        </p>
-    </section>
+export default function CataContainer({ img, title, arq }: ProjData) {
+  return (
+    <article class="CardCat">
+      <img src={img} alt="img.alt" />
+      <div class="CardCat-div"></div>
+      <p class="CardCat-ti">
+        {title}
+      </p>
+      <p class="CardCat-ar">
+        {arq}
+      </p>
+    </article>
   );
 }

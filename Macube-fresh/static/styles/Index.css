@@ -1,3 +1,6 @@
+@import url("./main.css");
+@import url("./island.css");
+
 *{
     @apply
         font-mono
@@ -7,21 +10,29 @@
     @apply
         -z-10
         h-screen w-screen
-        bg-gradient-to-r from-[#D2C7CB] to-[#E6DBDF]
+        bg-gradient-to-b from-[#7caad3] to-[#5F9ACF]
+
 }
 
 .Body{
     @apply
         -z-20
-        h-full w-full
+        h-full 
         bg-[url(/images/fondo4k.webp)] bg-cover bg-no-repeat
 }
 
 .Body1{
     @apply
         -z-20
-        h-full w-full
-        bg-gradient-to-r from-[#D2C7CB] to-[#E6DBDF]
+        h-full 
+        bg-gradient-to-t from-[#789e9d] to-[#5F9ACF] 
+}
+
+.Body2{
+    @apply
+        -z-20
+        h-full 
+        bg-gradient-to-b from-[#789e9d] to-[#309e9a]
 }
 
 
@@ -50,7 +61,6 @@
 
 .ArticleMid{
     @apply
-        w-full
         h-1/2
         text-center
         flex flex-col justify-center align-top items-center
@@ -75,9 +85,12 @@
 
 .ArticleEnd #ContText{
     @apply
-        w-1/3
         ml-52
         text-left
         mt-5 mb-5
 }
 
+.ButtomAr{
+    @apply
+        z-10
+}

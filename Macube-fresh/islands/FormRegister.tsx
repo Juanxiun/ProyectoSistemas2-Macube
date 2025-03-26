@@ -31,10 +31,12 @@ export default function FormularioRegistro() {
         setMensaje("✅ Registro exitoso");
         setTimeout(() => globalThis.location.href = "/", 1000);
       } else {
+        console.log(data.error);
         setMensaje(`❌ ${data.error}`);
       }
-    } catch (error) {
-      setMensaje("❌ Error en el registro");
+    } catch (_error) {
+      console.log(_error)
+      setMensaje('❌ Error en el registro');
     }
   }
   return (

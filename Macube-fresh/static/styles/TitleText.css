@@ -9,6 +9,8 @@
         text-5xl
 }
 
+
+
 .TextMain{
     @apply
         text-5xl
@@ -17,11 +19,21 @@
 .TitleCtx{
     @apply
         text-5xl
-        mb-3 mt-2
+        border-b-4 border-black
+        mb-4 mt-2
 }
 
 .TextCtx{
     @apply
         text-4xl
         tracking-tighter
+}
+
+
+.TitleCtx2{
+    @apply
+        text-5xl
+        text-center
+        mb-4 mt-2
+    
 }

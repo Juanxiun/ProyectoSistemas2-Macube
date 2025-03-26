@@ -1,5 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getCookies } from "$std/http/cookie.ts";
+import CataContainer from "../islands/CataContainer.tsx";
 import Footer from "../islands/Footer.tsx";
 import NavBar from "../islands/NavBar.tsx";
 import ContMain from "../islands/PagInicio/ContMain.tsx";
@@ -18,13 +19,12 @@ export const handler: Handlers = {
 
     if (cookies.auth) {
       try {
-        
-        const decodedAuth = decodeURIComponent(cookies.auth); 
+        const decodedAuth = decodeURIComponent(cookies.auth);
         const authData = JSON.parse(decodedAuth);
 
         if (authData && authData.ci) {
           userdata = authData.ci;
-          isAllowed = true; 
+          isAllowed = true;
         }
       } catch (error) {
         console.log("Error parsing auth cookie:", error);
@@ -37,11 +37,14 @@ export const handler: Handlers = {
     });
   },
 };
+
 export default function Home({ data }: PageProps<Data>) {
   const session = data.isAllowed;
   const userdata = data.userdata;
   console.log(userdata);
-  
+
+
+
   return (
     <div class="Index">
       <div class="Body">
@@ -66,9 +69,21 @@ export default function Home({ data }: PageProps<Data>) {
                 en hacer realidad tus ideas con calidad y precisión."
           Style="ArticleMid"
         />
+
+        <h2 class="TitleCtx2">PROYECTOS RECIENTES</h2>
+
+        <div class=" w-full flex flex-row justify-between">
+          {Array.from({ length: 3 }, (_, i) => (
+            <CataContainer
+              img="/images/fondo4k.webp"
+              title={`proyecto ${i}`}
+              arq="juanxiu"
+            />
+          ))}
+        </div>
       </div>
 
-      <div class="Body1">
+      <div class="Body2">
         <ContMain
           Title="CONTACTANOS"
           Text="contactanos en ... xd aun falta pipipi"

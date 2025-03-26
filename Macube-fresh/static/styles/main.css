@@ -1,0 +1,56 @@
+/*primero se cargan los import :v*/
+@import url('./island.css');
+
+
+*{
+    @apply
+        font-mono
+}
+
+body{
+    @apply
+        bg-[#393a44]
+}
+
+.main{
+    @apply  
+        h-screen
+        flex flex-row
+        justify-around
+        
+}
+
+.img-bg{
+    @apply
+        -z-10
+        fixed
+        h-full w-full
+        flex justify-end align-bottom items-end
+
+        md:justify-end md:align-middle 
+}
+
+.img-bg img{
+    @apply
+        h-1/2 w-2/3
+        md:h-2/3 md:w-2/3
+}
+
+.cont-main{
+    @apply
+        w-full h-full
+        pl-0
+        py-4
+        md:pl-10
+        
+}
+
+.cont-main-b{
+    @apply
+        h-full w-full
+        bg-white
+        flex flex-col
+        rounded-l-3xl
+        
+}
+

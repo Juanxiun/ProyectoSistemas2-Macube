@@ -1,0 +1,73 @@
+.SiderBar {
+    @apply
+        h-full max-w-3xl
+        md:w-1/2
+        animate-[SiderBarAnim_1s_ease-in-out]
+}
+
+.SiderBar-I{
+    @apply
+        w-20
+}
+
+@keyframes SiderBarAnim{
+    0% {transform: translateX(-200px); opacity: 0;}
+    100% {transform: translateX(0); opacity: 1;}
+}
+
+
+.NavBar{
+    @apply
+        w-full
+}
+
+.NavBar-I{
+    @apply
+        mb-5 mr-0
+        rounded-tl-3xl
+        shadow-2xl
+        bg-[#c7c7c7]
+        flex flex-col align-middle items-center 
+        md:flex-row md:justify-around
+}
+
+.div1-n{
+    @apply
+        py-3 px-3
+        text-center
+}
+
+.div2-n{
+    @apply
+        py-2 px-3
+        my-2
+        w-full
+        flex flex-col align-middle justify-end items-center
+        md:flex-col 
+        lg:flex-row lg:my-5
+}
+
+.searchXD{
+    @apply
+        py-2 px-3
+        my-2 mx-10
+        md:my-7
+        rounded-3xl
+        w-full
+        md:w-full
+        lg:w-1/2
+}
+
+.div-count{
+    @apply
+        py-2 px-3
+
+}
+
+.div-count a{
+    @apply
+        mt-10 mb-10
+        px-16 py-2
+        border-2 border-white
+        bg-white rounded-3xl
+}

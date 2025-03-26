@@ -23,16 +23,16 @@
 .NavCont2{
     @apply
         w-1/5
-        flex justify-between
+        flex justify-around
 }
 
 /*FOOTER*/
 
 .Footer{
     @apply
-        w-3/6
-        pl-10 pr-10
-        flex flex-row justify-around
+        w-full
+        p-10
+        flex  justify-between
 }
 
 .Footer-l{
@@ -56,3 +56,39 @@
         p-4 pt-2 pb-2
         rounded-2xl
 }
+
+
+/*card de proyectos recientes*/
+
+.CardCat{
+    @apply
+        relative isolate
+        px-8 pb-8 pt-48 w-1/4 mx-auto mt-12
+        flex flex-col justify-end overflow-hidden 
+        bg-white/30 rounded-2xl border-2 border-white/30 shadow-2xl
+
+        hover:scale-110 hover:shadow-2xl
+}
+
+.CardCat img{
+    @apply
+        absolute inset-0 h-full w-full object-cover
+}
+
+.CardCat-div{
+    @apply
+        absolute inset-0 bg-gradient-to-t from-gray-600 via-gray-600/40
+}
+
+.CardCat-ti{
+    @apply
+        z-10 mt-3 text-3xl text-white
+}
+
+.CardCat-ar{    
+    @apply
+        z-10 gap-y-1 overflow-hidden text-sm leading-6 text-gray-300
+}
+
+
+/* flecha para bajar */

@@ -11,7 +11,6 @@ export const handler: Handlers = {
       const ci = form.get("ci")?.toString();
       const pass = form.get("pass")?.toString();
 
-      // Validación del login
       const valLogin = await ValLogin({
         ci: ci ? parseInt(ci) : undefined,
         password: pass,
@@ -21,13 +20,12 @@ export const handler: Handlers = {
         return new Response(
           JSON.stringify({
             success: false,
-            error: valLogin,
+            error: valLogin,s
           }),
           { status: 401, headers: { "Content-Type": "application/json" } },
         );
       }
 
-      // Consulta a la base de datos
       const result = await db.queryObject(
         "SELECT * FROM clientes WHERE ci = $1 AND pass = $2",
         [ci, pass],

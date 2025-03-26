@@ -49,66 +49,80 @@ export function ValLogin({ ci, password }: DataLogin): Promise<string> {
 }
 
 export function ValRegister({
-    ci,
-    extension,
-    nombres,
-    apellidos,
-    telefono1,
-    telefono2,
-    correo,
-    pass,
-  }: DataRegister): Promise<string> {
-    let errores: string[] = [];
-  
+  ci,
+  extension,
+  nombres,
+  apellidos,
+  telefono1,
+  telefono2,
+  correo,
+  pass,
+}: DataRegister): Promise<string> {
+  let _errores: string = "";
+
+  try {
     // Validación de CI (Carnet de identidad)
     if (!ci || isNaN(ci) || ci < 100000 || ci > 9999999999) {
-      errores.push("El CI debe ser un número entre 6 y 10 dígitos.");
+      _errores += " El CI debe ser un número entre 6 y 10 dígitos.";
+      return Promise.resolve(_errores);
     }
-  
+
     // Validación de extensión (Máximo 3 caracteres, solo letras)
     if (extension && !/^[a-zA-Z]{1,3}$/.test(extension)) {
-      errores.push("La extensión solo puede contener letras y hasta 3 caracteres.");
+      _errores +=
+        " La extensión solo puede contener letras y hasta 3 caracteres.";
+      return Promise.resolve(_errores);
     }
-  
+
     // Validación de nombres y apellidos (Solo letras y espacios, máximo 50 caracteres)
     if (!nombres || !/^[a-zA-Z\s]{1,50}$/.test(nombres)) {
-      errores.push("El nombre solo puede contener letras y espacios, máximo 50 caracteres.");
+      _errores +=
+        " El nombre solo puede contener letras y espacios, máximo 50 caracteres.";
+      return Promise.resolve(_errores);
     }
     if (!apellidos || !/^[a-zA-Z\s]{1,50}$/.test(apellidos)) {
-      errores.push("El apellido solo puede contener letras y espacios, máximo 50 caracteres.");
+      _errores +=
+        " El apellido solo puede contener letras y espacios, máximo 50 caracteres.";
+      return Promise.resolve(_errores);
     }
-  
+
     // Validación de teléfonos (Deben ser números de 7 u 8 dígitos)
-    if (!telefono1 || isNaN(telefono1) || !/^\d{7,8}$/.test(telefono1.toString())) {
-      errores.push("El teléfono 1 debe ser un número de 7 u 8 dígitos.");
+    if (
+      !telefono1 || isNaN(telefono1) || !/^\d{7,8}$/.test(telefono1.toString())
+    ) {
+      _errores += "El teléfono 1 debe ser un número de 7 u 8 dígitos.";
+      return Promise.resolve(_errores);
     }
     if (telefono2 && (!/^\d{7,8}$/.test(telefono2.toString()))) {
-      errores.push("El teléfono 2 debe ser un número de 7 u 8 dígitos.");
+      _errores += "El teléfono 2 debe ser un número de 7 u 8 dígitos.";
+      return Promise.resolve(_errores);
     }
-  
+
     // Validación de correo electrónico
     if (!correo || !/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,6}$/.test(correo)) {
-      errores.push("El correo electrónico no es válido.");
+      _errores += "El correo electrónico no es válido.";
+      return Promise.resolve(_errores);
     }
-  
+
     // Validación de contraseña
     if (!pass || pass.length < 8 || pass.length > 40) {
-      errores.push("La contraseña debe tener entre 8 y 40 caracteres.");
+      _errores += " La contraseña debe tener entre 8 y 40 caracteres.";
     }
     if (pass && !/[A-Z]/.test(pass)) {
-      errores.push("La contraseña debe contener al menos una letra mayúscula.");
+      _errores += " La contraseña debe contener al menos una letra mayúscula.";
     }
     if (pass && !/[a-z]/.test(pass)) {
-      errores.push("La contraseña debe contener al menos una letra minúscula.");
+      _errores += " La contraseña debe contener al menos una letra minúscula.";
     }
     if (pass && !/\d/.test(pass)) {
-      errores.push("La contraseña debe contener al menos un número.");
+      _errores += " La contraseña debe contener al menos un número.";
     }
     if (pass && !/[!@#$%^&*(),.?":{}|<>]/.test(pass)) {
-      errores.push("La contraseña debe contener al menos un carácter especial.");
+      _errores += " La contraseña debe contener al menos un carácter especial.";
     }
-  
-    // Retornar errores si existen
-    return errores.length > 0 ? Promise.resolve(errores.join("\n")) : Promise.resolve("Validación exitosa");
+    return Promise.resolve(_errores);
+  } catch (error) {
+    console.log(error);
+    return Promise.resolve("Error en la validación.");
   }
-  
+}

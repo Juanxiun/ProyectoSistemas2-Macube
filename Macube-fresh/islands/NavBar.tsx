@@ -1,33 +1,22 @@
-import Search from "../components/Search.tsx";
-
 interface Data {
   isAllowed: boolean;
-  ci: number;
+  ci?: number;
 }
 
 export default function NavBar({ isAllowed, ci }: Data) {
   return (
     <nav class="NavBar">
-      <div class="NavMain">
-        {isAllowed
-          ? (
-            <div class="NavCont">
-              <p>Bienvenido:  {ci}</p>
-              <Search />
-            </div>
-          )
-          : (
-            <div>
-              <p>INICIA SESION PARA VER EL CONTENIDO</p>
-            </div>
-          )}
+      <div class="NavBar-I">
+        <div class="div1-n">
+          {isAllowed ? <p>BIENVENIDO USUARIO NUMERO DESCONOCIDO XD</p> : ("")}
+        </div>
 
-        <div class="NavCont2">
-          <a href="/cite">CREAR UNA CITA</a>
+        <div class="div2-n">
+          <input type="search" name="buscador" id="buscador" class="searchXD" />
 
-          {isAllowed
-            ? <a href="/logout">CERRAR SESION</a>
-            : <a href="/login">INICIAR SESION</a>}
+          <div class="div-count">
+            <a href="/">MI CUENTA</a>
+          </div>
         </div>
       </div>
     </nav>

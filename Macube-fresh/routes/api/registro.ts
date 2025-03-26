@@ -7,6 +7,7 @@ export const handler: Handlers = {
   async POST(req) {
     const url = new URL(req.url);
     const formData = await req.formData();
+
     const ci = formData.get("ci")?.toString();
     const extension = formData.get("extension")?.toString();
     const nombres = formData.get("nombres")?.toString();
@@ -31,28 +32,17 @@ export const handler: Handlers = {
       return new Response(
         JSON.stringify({
           success: false,
-          error: ValRegister,
+          error: valReg, 
         }),
-        { status: 401, headers: { "Content-type": "application/json" } },
+        { status: 401, headers: { "Content-Type": "application/json" } },
       );
     }
 
     try {
-      const query = `
-      INSERT INTO clientes (CI, EXTENSION, NOMBRES, APELLIDOS, TELEFONO, TELEFONO2, CORREO, PASS, REFERENCIA, HABILITADO)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 1)
-    `;
-      await db.queryObject(query, [
-        ci,
-        extension,
-        nombres,
-        apellidos,
-        telefono,
-        telefono2 || null,
-        correo || null,
-        pass,
-        null,
-      ]);
+-
+      await db.queryObject("INSERT INTO clientes (CI, EXTENSION, NOMBRES, APELLIDOS, TELEFONO, TELEFONO2, CORREO, PASS, REFERENCIA, HABILITADO) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 1)",
+        [ci, extension, nombres, apellidos, telefono, telefono2, correo, pass, null]
+      );
 
       const headers = new Headers();
       const encodedCi = encodeURIComponent(JSON.stringify({ ci }));
@@ -72,7 +62,7 @@ export const handler: Handlers = {
         { status: 200, headers },
       );
     } catch (error) {
-      console.error(error);
+      console.error("Error en la inserción de datos:", error);
       return new Response(
         JSON.stringify({ error: "Error interno del servidor" }),
         { status: 500, headers: { "Content-Type": "application/json" } },
