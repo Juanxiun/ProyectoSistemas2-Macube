@@ -1,56 +1,51 @@
 import { Handlers } from "$fresh/server.ts";
 import { db } from "../../lib/database/connect.ts";
 import { setCookie } from "$std/http/cookie.ts";
-import { ValRegister } from "../../lib/utils/validacion.ts";
 
 export const handler: Handlers = {
   async POST(req) {
     const url = new URL(req.url);
     const formData = await req.formData();
 
-    const ci = formData.get("ci")?.toString();
-    const extension = formData.get("extension")?.toString();
-    const nombres = formData.get("nombres")?.toString();
-    const apellidos = formData.get("apellidos")?.toString();
-    const telefono = formData.get("telefono")?.toString();
-    const telefono2 = formData.get("telefono2")?.toString();
-    const correo = formData.get("correo")?.toString();
-    const pass = formData.get("pass")?.toString();
-
-    const valReg = await ValRegister({
-      ci: ci ? parseInt(ci) : undefined,
-      extension: extension,
-      nombres: nombres,
-      apellidos: apellidos,
-      telefono1: telefono ? parseInt(telefono) : undefined,
-      telefono2: telefono2 ? parseInt(telefono2) : undefined,
-      correo: correo,
-      pass: pass,
-    });
-
-    if (valReg !== "Validacion exitosa") {
-      return new Response(
-        JSON.stringify({
-          success: false,
-          error: valReg, 
-        }),
-        { status: 401, headers: { "Content-Type": "application/json" } },
-      );
-    }
-
     try {
--
-      await db.queryObject("INSERT INTO clientes (CI, EXTENSION, NOMBRES, APELLIDOS, TELEFONO, TELEFONO2, CORREO, PASS, REFERENCIA, HABILITADO) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 1)",
-        [ci, extension, nombres, apellidos, telefono, telefono2, correo, pass, null]
+      // Extracción de datos
+      const ci = formData.get("ci")?.toString() || "";
+      const extension = formData.get("extension")?.toString() || "";
+      const nombres = formData.get("nombres")?.toString() || "";
+      const apellidos = formData.get("apellidos")?.toString() || "";
+      const telefono = formData.get("telefono")?.toString() || "";
+      const telefono2 = formData.get("telefono2")?.toString();
+      const correo = formData.get("correo")?.toString();
+      const pass = formData.get("pass")?.toString() || "";
+
+      // Inserción en base de datos
+      await db.queryObject(`
+        INSERT INTO clientes 
+          (ci, extension, nombres, apellidos, telefono, telefono2, correo, pass, referencia, habilitado) 
+        VALUES 
+          ($1, $2, $3, $4, $5, $6, $7, $8, $9, 1)`,
+        [
+          ci, 
+          extension, 
+          nombres, 
+          apellidos, 
+          telefono, 
+          telefono2 || null, 
+          correo || null, 
+          pass, 
+          null
+        ]
       );
 
+      // Configurar cookie
       const headers = new Headers();
-      const encodedCi = encodeURIComponent(JSON.stringify({ ci }));
+      const userData = { ci, nombre: nombres };
+      const encodedData = encodeURIComponent(JSON.stringify(userData));
 
       setCookie(headers, {
         name: "auth",
-        value: encodedCi,
-        maxAge: 60 * 60 * 24,
+        value: encodedData,
+        maxAge: 60 * 60 * 24 * 7,
         sameSite: "Lax",
         domain: url.hostname,
         path: "/",
@@ -58,13 +53,13 @@ export const handler: Handlers = {
       });
 
       return new Response(
-        JSON.stringify({ success: true, message: "REGISTRO exitoso" }),
+        JSON.stringify({ success: true, message: "Registro exitoso" }),
         { status: 200, headers },
       );
     } catch (error) {
-      console.error("Error en la inserción de datos:", error);
+      console.error("Error en registro:", error);
       return new Response(
-        JSON.stringify({ error: "Error interno del servidor" }),
+        JSON.stringify({ error: "Error al registrar. Intente nuevamente." }),
         { status: 500, headers: { "Content-Type": "application/json" } },
       );
     }
