@@ -24,23 +24,40 @@ export default function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit} class="flex flex-col gap-2">
-      <input
-        type="number"
-        value={ci}
-        onInput={(e) => setci(e.currentTarget.value)}
-        placeholder="ci"
-        required
-      />
-      <input
-        type="password"
-        value={pass}
-        onInput={(e) => setPass(e.currentTarget.value)}
-        placeholder="Contraseña"
-        required
-      /> 
-      <button type="submit">Iniciar sesión</button>
-      {mensaje && <p>{mensaje}</p>}
-    </form>
+    <div class="">
+      
+
+      {/* Sección del login centrado */}
+      <div class="">
+        <div class="">
+          
+          <form onSubmit={handleSubmit} class="flex flex-col gap-4">
+            <input
+              type="number"
+              value={ci}
+              onInput={(e) => setci(e.currentTarget.value)}
+              placeholder="CI"
+              required
+              class="p-2 border rounded w-full"
+            />
+            <input
+              type="password"
+              value={pass}
+              onInput={(e) => setPass(e.currentTarget.value)}
+              placeholder="Contraseña"
+              required
+              class="p-2 border rounded w-full"
+            /> 
+            <button 
+              type="submit"
+              class="bg-blue-500 text-white p-2 rounded w-full hover:bg-blue-600"
+            >
+              Iniciar sesión
+            </button>
+            {mensaje && <p class="text-red-500 text-center">{mensaje}</p>}
+          </form>
+        </div>
+      </div>
+    </div>
   );
 }

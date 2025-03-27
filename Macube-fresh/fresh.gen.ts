@@ -11,6 +11,8 @@ import * as $dashboard from "./routes/dashboard.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $Login from "./islands/Login.tsx";
+import * as $ModalSettings from "./islands/ModalSettings.tsx";
+import * as $ProjectSections from "./islands/ProjectSections.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -26,6 +28,8 @@ const manifest = {
   },
   islands: {
     "./islands/Login.tsx": $Login,
+    "./islands/ModalSettings.tsx": $ModalSettings,
+    "./islands/ProjectSections.tsx": $ProjectSections,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
