@@ -1,8 +1,10 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getCookies } from "$std/http/cookie.ts";
+//import { CartaContainer } from "../islands/PagInicio/CartaContainer.tsx";
 import NavBar from "../islands/NavBar.tsx";
 import ContMain from "../islands/PagInicio/ContMain.tsx";
 import SiderBar from "../islands/SiderBar.tsx";
+
 
 interface Data {
   isAllowed: boolean;
@@ -40,28 +42,56 @@ export const handler: Handlers = {
 export default function Home({ data }: PageProps<Data>) {
   return (
     <div class="main-index">
-      <SiderBar />
+      <SiderBar userAllow={data.isAllowed} ci={data.userdata}/>
 
       <div class="main-index-in">
         <NavBar isAllowed={data.isAllowed} ci={data.userdata} />
-        <div class="main-index-b">
-          <ContMain
-            Title="MACUBE"
-            Title2="DISEÑO Y ARTE"
-            Text="transformaremos tu sueño 
+
+        <div className="main-index-a">
+          <div id="somos" class="main-index-b ">
+            <ContMain
+              Title="MACUBE"
+              Title2="DISEÑO Y ARTE"
+              Text="transformaremos tu sueño 
                   en un proyecto REAL combinando
                   diseño, arte y precision tecnica"
-            Style="ArticlePres"
-          />
+              Style="ArticlePres"
+            />
 
-          <div
-           class={`w-full h-full px-5 flex justify-center align-middle items-center `}>
-            <img src="/images/Multimedia.webp" alt="xdxdxd" className={`h-full w-5/6`} />
+            <div
+              class={`w-full h-full px-5 flex justify-center align-middle items-center `}
+            >
+              <img
+                src="/images/Multimedia.webp"
+                alt="xdxdxd"
+                className={`h-full w-5/6`}
+              />
+            </div>
           </div>
 
-          <div>
+
+          <div id="trabajos" class="main-b-mid">
+            <ContMain
+              Title="BIENVENIDO"
+              Text="Te acompañamos en cada etapa de tu obra, 
+                    brindando asesoramiento experto y soluciones eficientes."
+              Style="ArticleMid"
+            />
             
+            {
+
+            }
           </div>
+
+
+          <div id="citas" class="main-b-end">
+            <ContMain
+              Title="CONTACTANOS"
+              Text="RESERVA UNA CITA REGISTRANDOTE"
+              Style="ArticleEnd"
+            />
+          </div>
+
 
         </div>
       </div>

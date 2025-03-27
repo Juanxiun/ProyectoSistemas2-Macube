@@ -20,7 +20,7 @@ export const handler: Handlers = {
         return new Response(
           JSON.stringify({
             success: false,
-            error: valLogin,s
+            error: valLogin,
           }),
           { status: 401, headers: { "Content-Type": "application/json" } },
         );
@@ -40,9 +40,9 @@ export const handler: Handlers = {
           value: encodedCi,
           maxAge: 60 * 60 * 24,
           sameSite: "Lax",
-          domain: url.hostname,
           path: "/",
-          secure: true,
+          secure: false,
+          httpOnly: false,
         });
 
         return new Response(

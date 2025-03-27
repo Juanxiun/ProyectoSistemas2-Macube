@@ -5,7 +5,7 @@ interface Props {
 
 export default function TextComp({ text, style }: Props) {
   return (
-    <h1 class={style ? style : "TextDefault"}>
+    <h1 id="texto" class={style ? style : "TextDefault"}>
       {text}
     </h1>
   );

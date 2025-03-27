@@ -8,7 +8,10 @@ interface Props {
   Style: string;
 }
 
-export default function ContMain({ Title, Title2, Text, Style }: Props) {
+export default function ContMain({Title, Title2, Text, Style}: Props) {
+  
+
+
   const defStyleTitle = Style === "ArticlePres" ? "TitleMain" : "TitleCtx";
   const defStyleText = Style === "ArticlePres" ? "TextMain" : "TextCtx";
 
@@ -16,7 +19,7 @@ export default function ContMain({ Title, Title2, Text, Style }: Props) {
     <div class={Style}>
       <div>
         <div id="ContTitle">
-          {Title2 ? <h2 class="Title2">{Title2}</h2> : ("")}
+          {Title2 ? <h2 id="tituloMain" class="Title2">{Title2}</h2> : ("")}
           <TitleComp title={Title} style={defStyleTitle} />
         </div>
 

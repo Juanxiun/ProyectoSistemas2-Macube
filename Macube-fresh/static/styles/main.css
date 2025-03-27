@@ -26,15 +26,34 @@ body{
     @apply
         my-8 
         w-full 
+
+}
+
+.main-index-a{
+    @apply
+        h-5/6
+        overflow-y-auto
+        my-3 ml-10
+        bg-white
+        rounded-l-3xl
+
+        /*desplazamiento*/
+        [&::-webkit-scrollbar]:w-2
+        [&::-webkit-scrollbar-track]:bg-transparent
+        [&::-webkit-scrollbar-thumb]:bg-current
+        [&::-webkit-scrollbar-thumb]:rounded-full
+        [&::-webkit-scrollbar-thumb]:border-2
+        [&::-webkit-scrollbar-thumb]:border-solid
+        [&::-webkit-scrollbar-thumb]:border-transparent
+        [&::-webkit-scrollbar-thumb]:bg-clip-padding
+        text-gray-400 hover:text-gray-500
+
 }
 
 .main-index-b{
     @apply
-        h-5/6
-        my-3 ml-10
-        bg-white
-        rounded-l-3xl 
-        flex flex-row 
+        h-full 
+        flex flex-row
         justify-center align-middle items-center
 }
 
@@ -46,21 +65,29 @@ body{
         
 }
 
-.cont-main{
+.main-b-mid{
     @apply
-        w-full h-full
-        pl-0
-        py-4
-        md:pl-10
-        
-}
-
-.cont-main-b{
-    @apply
-        h-full w-full
-        bg-white
+        h-full 
         flex flex-col
-        rounded-l-3xl
-        
+        justify-center align-middle items-center
 }
 
+.ArticleMid{
+    @apply
+        w-3/4
+        text-center
+}
+
+
+.main-b-end{
+    @apply
+        h-full 
+        flex flex-col
+        justify-center align-middle items-center
+}
+
+.ArticleEnd{
+    @apply
+        w-3/4
+        text-center
+}
