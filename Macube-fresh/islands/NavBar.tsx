@@ -7,7 +7,7 @@ interface Data {
 }
 
 export default function NavBar({ isAllowed, ci }: Data) {
-  const [login, setLogin] = useState("login");
+  const [login, setLogin] = useState("");
 
   useEffect(() => {
     setLogin(isAllowed ? "logout" : "login");

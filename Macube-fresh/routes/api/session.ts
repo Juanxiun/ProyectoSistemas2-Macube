@@ -6,7 +6,6 @@ import { ValLogin } from "../../lib/utils/validacion.ts";
 export const handler: Handlers = {
   async POST(req) {
     try {
-      const url = new URL(req.url);
       const form = await req.formData();
       const ci = form.get("ci")?.toString();
       const pass = form.get("pass")?.toString();
