@@ -1,12 +1,13 @@
 interface propsLink{
+  id? : string;
   url: string;
   text: string;
   style? : string;
 }
 
-export function LikNav({url, text, style} : propsLink){
+export function LikNav({id, url, text, style} : propsLink){
   return(
-      <a style={style} href={url}>
+      <a id={id} class={style} href={url}>
           {text}
       </a>
   );

@@ -14,14 +14,15 @@ export default function ContMain({ Title, Title2, Text, Style }: Props) {
 
   return (
     <div class={Style}>
+      <div>
+        <div id="ContTitle">
+          {Title2 ? <h2 class="Title2">{Title2}</h2> : ("")}
+          <TitleComp title={Title} style={defStyleTitle} />
+        </div>
 
-      <div id="ContTitle">
-        {Title2 ? <h2 class="Title2">{Title2}</h2> : ("")}
-        <TitleComp title={Title} style={defStyleTitle} />
-      </div>
-
-      <div id="ContText">
-        <TextComp text={Text} style={defStyleText} />
+        <div id="ContText">
+          <TextComp text={Text} style={defStyleText} />
+        </div>
       </div>
     </div>
   );

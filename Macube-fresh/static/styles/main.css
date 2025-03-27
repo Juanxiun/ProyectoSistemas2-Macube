@@ -1,6 +1,7 @@
 /*primero se cargan los import :v*/
 @import url('./island.css');
-
+@import url('./TitleText.css');
+@import url('./Components.css');
 
 *{
     @apply
@@ -12,28 +13,37 @@ body{
         bg-[#393a44]
 }
 
+/*pagina de bienvenida*/
+.main-index{
+    @apply
+        h-screen
+        flex flex-row 
+        justify-between
+
+}
+
+.main-index-in{
+    @apply
+        my-8 
+        w-full 
+}
+
+.main-index-b{
+    @apply
+        h-5/6
+        my-3 ml-10
+        bg-white
+        rounded-l-3xl 
+        flex flex-row 
+        justify-center align-middle items-center
+}
+
 .main{
     @apply  
         h-screen
         flex flex-row
         justify-around
         
-}
-
-.img-bg{
-    @apply
-        -z-10
-        fixed
-        h-full w-full
-        flex justify-end align-bottom items-end
-
-        md:justify-end md:align-middle 
-}
-
-.img-bg img{
-    @apply
-        h-1/2 w-2/3
-        md:h-2/3 md:w-2/3
 }
 
 .cont-main{
