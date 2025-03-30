@@ -45,8 +45,8 @@ Asegúrate de tener Deno instalado en tu sistema.
 
 ### Clonar el repositorio
 ```sh
-git clone https://github.com/tu_usuario/macube-fresh.git
-cd macube-fresh
+git clone https://github.com/Juanxiun/ProyectoSistemas2-Macube.git
+cd ProyectoSistemas2-Macube
 ```
 
 ### Ejecutar la aplicación
