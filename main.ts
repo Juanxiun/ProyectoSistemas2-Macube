@@ -11,7 +11,3 @@ import manifest from "./fresh.gen.ts";
 import config from "./fresh.config.ts";
 
 await start(manifest, config);
-
-await start(manifest, {
-    staticDir: "./static",
-  });
