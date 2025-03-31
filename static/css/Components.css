@@ -1,0 +1,14 @@
+/*links*/
+.link-s{
+    @apply
+        py-2
+        text-lg
+        text-white
+}
+
+.link-s-m{
+    @apply
+        border-b-2
+        border-[#e4c36f]
+        text-[#e4c36f]
+}
