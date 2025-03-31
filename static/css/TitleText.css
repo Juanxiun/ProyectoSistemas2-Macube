@@ -1,0 +1,39 @@
+.TitleMain{
+    @apply
+        text-7xl
+        border-t-4 border-black
+}
+
+.Title2{
+    @apply
+        text-5xl
+}
+
+
+
+.TextMain{
+    @apply
+        text-3xl
+}
+
+.TitleCtx{
+    @apply
+        text-5xl
+        border-b-4 border-black
+        mb-4 mt-2
+}
+
+.TextCtx{
+    @apply
+        text-4xl
+        tracking-tighter
+}
+
+
+.TitleCtx2{
+    @apply
+        text-5xl
+        text-center
+        mb-4 mt-2
+    
+}

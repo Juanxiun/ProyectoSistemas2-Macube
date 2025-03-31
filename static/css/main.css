@@ -1,0 +1,93 @@
+/*primero se cargan los import :v*/
+@import url('./island.css');
+@import url('./TitleText.css');
+@import url('./Components.css');
+
+*{
+    @apply
+        font-mono
+}
+
+body{
+    @apply
+        bg-[#393a44]
+}
+
+/*pagina de bienvenida*/
+.main-index{
+    @apply
+        h-screen
+        flex flex-row 
+        justify-between
+
+}
+
+.main-index-in{
+    @apply
+        my-8 
+        w-full 
+
+}
+
+.main-index-a{
+    @apply
+        h-5/6
+        overflow-y-auto
+        my-3 ml-10
+        bg-gradient-to-r from-white to-[#e4c36f]
+        rounded-l-3xl
+
+        /*desplazamiento*/
+        [&::-webkit-scrollbar]:w-2
+        [&::-webkit-scrollbar-track]:bg-transparent
+        [&::-webkit-scrollbar-thumb]:bg-current
+        [&::-webkit-scrollbar-thumb]:rounded-full
+        [&::-webkit-scrollbar-thumb]:border-2
+        [&::-webkit-scrollbar-thumb]:border-solid
+        [&::-webkit-scrollbar-thumb]:border-transparent
+        [&::-webkit-scrollbar-thumb]:bg-clip-padding
+        text-gray-400 hover:text-gray-500
+
+}
+
+.main-index-b{
+    @apply
+        h-full 
+        flex flex-row
+        justify-center align-middle items-center
+}
+
+.main{
+    @apply  
+        h-screen
+        flex flex-row
+        justify-around
+        
+}
+
+.main-b-mid{
+    @apply
+        h-full 
+        flex flex-col
+        justify-center align-middle items-center
+}
+
+.ArticleMid{
+    @apply
+        w-3/4
+        text-center
+}
+
+
+.main-b-end{
+    @apply
+        h-full 
+        flex flex-col
+        justify-center align-middle items-center
+}
+
+.ArticleEnd{
+    @apply
+        w-3/4
+        text-center
+}

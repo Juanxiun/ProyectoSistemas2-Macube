@@ -1,0 +1,132 @@
+.SiderBar {
+    @apply
+        h-full
+        py-8
+        animate-[SiderBarAnim_1s_ease-in-out]
+}
+
+.SiderBar-I{
+    @apply        
+        h-full
+        w-40
+        flex flex-col justify-between align-middle items-center
+}
+
+@keyframes SiderBarAnim{
+    0% {transform: translateX(-200px); opacity: 0;}
+    100% {transform: translateX(0); opacity: 1;}
+}
+
+.Sider-logo{
+    @apply
+        my-4
+        h-20 w-20
+        bg-white
+        rounded-full
+}
+
+
+/*NAVBAR*/
+
+.NavBar{
+    @apply
+        w-full
+        
+}
+
+.NavBar-dx{
+    @apply
+        py-3 ml-10
+        rounded-l-3xl
+        shadow-2xl
+        bg-[#c7c7c7]
+        flex flex-col align-middle items-center 
+        md:flex-row md:justify-around
+}
+
+.NavBar-I{
+    @apply
+        py-3
+        rounded-tl-3xl
+        shadow-2xl
+        bg-[#c7c7c7]
+        flex flex-col align-middle items-center 
+        md:flex-row md:justify-around
+}
+
+.div1-n{
+    @apply
+        py-1 px-3
+        text-center
+}
+
+.div2-n{
+    @apply
+        py-1 px-3
+        my-1
+        w-full
+        flex flex-col align-middle justify-end items-center
+        md:flex-col 
+        lg:flex-row lg:my-5
+}
+
+.searchXD{
+    @apply
+        py-2 px-4
+        my-3
+        rounded-3xl
+        max-w-2xl
+        md:w-full md:my-1
+        lg:w-1/2 lg:my-1
+}
+
+.div-count{
+    @apply
+        py-2 px-3
+        mx-8
+}
+
+.div-count button{
+    @apply
+        px-3 py-2
+        my-3 mx-7
+        w-full 
+        border-2 border-white
+        bg-white rounded-3xl
+        flex flex-row justify-around align-middle items-center
+        md:my-1
+        lg:my-1
+}
+
+
+/*FOOTER*/
+
+.Footer{
+    @apply
+        w-full
+        p-10
+        flex  justify-between
+}
+
+.Footer-l{
+    @apply
+        m-5
+}
+
+.Footer-r{
+    @apply
+        m-5
+}
+
+.Footer-r a{
+    @apply
+        pl-5 pr-5
+}
+
+
+/*PAGINA DE INICIO*/
+.ArticlePres{
+    @apply
+        py-8 px-10
+        w-2/4
+}
