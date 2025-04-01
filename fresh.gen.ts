@@ -4,20 +4,36 @@
 
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
+import * as $api_ProyApi_proyectos from "./routes/api/ProyApi/proyectos.ts";
 import * as $api_joke from "./routes/api/joke.ts";
+import * as $api_middleware from "./routes/api/middleware.ts";
+import * as $api_sessions from "./routes/api/sessions.ts";
 import * as $index from "./routes/index.tsx";
+import * as $proyectos_index from "./routes/proyectos/index.tsx";
+import * as $sesion_logout from "./routes/sesion/logout.ts";
 import * as $Counter from "./islands/Counter.tsx";
+import * as $MainIsland from "./islands/MainIsland.tsx";
+import * as $NavBar from "./islands/NavBar.tsx";
+import * as $SiderBar from "./islands/SiderBar.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
+    "./routes/api/ProyApi/proyectos.ts": $api_ProyApi_proyectos,
     "./routes/api/joke.ts": $api_joke,
+    "./routes/api/middleware.ts": $api_middleware,
+    "./routes/api/sessions.ts": $api_sessions,
     "./routes/index.tsx": $index,
+    "./routes/proyectos/index.tsx": $proyectos_index,
+    "./routes/sesion/logout.ts": $sesion_logout,
   },
   islands: {
     "./islands/Counter.tsx": $Counter,
+    "./islands/MainIsland.tsx": $MainIsland,
+    "./islands/NavBar.tsx": $NavBar,
+    "./islands/SiderBar.tsx": $SiderBar,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
