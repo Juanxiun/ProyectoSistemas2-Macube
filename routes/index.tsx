@@ -38,6 +38,8 @@ export const handler: Handlers = {
 };
 
 export default function Home({ data }: PageProps<Data>) {
+
+
   return (
     <div class="main-index">
       <SiderBar userAllow={data.isAllowed} ci={data.userdata} />
@@ -46,7 +48,6 @@ export default function Home({ data }: PageProps<Data>) {
         <NavBar isAllowed={data.isAllowed} ci={data.userdata} />
 
         <div className="main-index-a">
-
         </div>
       </div>
     </div>
