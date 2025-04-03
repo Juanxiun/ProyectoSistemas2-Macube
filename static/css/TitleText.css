@@ -60,5 +60,12 @@
     @apply
         text-3xl
         text-black
-        
+
+}
+
+.proy-id-title-main{
+    @apply
+        text-5xl
+        text-black
+        mb-10
 }

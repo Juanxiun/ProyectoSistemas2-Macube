@@ -56,7 +56,7 @@ export const handler: Handlers = {
   async POST(req) {
     try {
       const body = await req.json();
-      const { cicli, codearq, nombre, tipo, inicio, imagen, habilitado } = body;
+      const { cicli, codearq, nombre, tipo, inicio, imagen} = body;
 
       //const dateInit = fechasConvert(inicio);
       //const dateFin = fechasConvert(final);
@@ -69,7 +69,7 @@ export const handler: Handlers = {
         tipo,
         inicio,
         imagen,
-        habilitado,
+        habilitado: 1,
       };
 
       const regist = await postProyectos(newProyecto);
@@ -99,18 +99,17 @@ export const handler: Handlers = {
   async PUT(req) {
     try {
       const body = await req.json();
-      const { id, cicli, codearq, nombre, tipo, inicio, final, imagen} = body;
-      const dateInit = fechasConvert(inicio);
-      const dateFin = fechasConvert(final);
+      const { id, nombre, tipo, inicio, imagen} = body;
+      //const dateInit = fechasConvert(inicio);
+
 
       const editProyecto: MOD_PROYECTOS = {
         id,
-        cicli,
-        codearq,
+        cicli: 0,
+        codearq: "",
         nombre,
         tipo,
-        inicio: new Date(dateInit),
-        final: new Date(dateFin),
+        inicio,
         imagen,
         habilitado: 1,
       };

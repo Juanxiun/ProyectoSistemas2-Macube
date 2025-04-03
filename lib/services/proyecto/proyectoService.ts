@@ -61,12 +61,11 @@ export const postProyectos = async (data: MOD_PROYECTOS): Promise<string> => {
 export const putProyectos = async (data: MOD_PROYECTOS): Promise<string> => {
   try {
     await query.queryObject(
-      "UPDATE proyectos SET nombre = $1, tipo = $2, inicio = $3, final = $4, imagen = $5 WHERE id = $6",
+      "UPDATE proyectos SET nombre = $1, tipo = $2, inicio = $3, imagen = $4 WHERE id = $5",
       [
         data.nombre,
         data.tipo,
         data.inicio,
-        data.final,
         data.imagen,
         data.id,
       ],
