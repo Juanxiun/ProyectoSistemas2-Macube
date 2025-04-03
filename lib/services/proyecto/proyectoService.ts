@@ -6,12 +6,12 @@ let proyectosList: MOD_PROYECTOS[] = [];
 const query = db;
 
 //GET PROYECTOS *-  *
-export const getProyectos = async (id?: number): Promise<MOD_PROYECTOS[]> => {
+export const getProyectos = async (_ci: string, id?: number): Promise<MOD_PROYECTOS[]> => {
   try {
     if (id && id > 0) {
       const result = await query.queryObject<MOD_PROYECTOS>(
-        "SELECT * FROM proyectos WHERE habilitado = 1 AND id = $1",
-        [id],
+        "SELECT * FROM proyectos WHERE habilitado = 1 AND id = $1 AND codearq= $2",
+        [id, _ci],
       );
       if (result) {
         proyectosList = result.rows;
@@ -21,7 +21,8 @@ export const getProyectos = async (id?: number): Promise<MOD_PROYECTOS[]> => {
       }
     }
     const result = await query.queryObject<MOD_PROYECTOS>(
-      "SELECT * FROM proyectos WHERE habilitado = 1",
+      "SELECT * FROM proyectos WHERE habilitado = 1 AND codearq= $1",
+      [_ci]
     );
     if (result) {
       proyectosList = result.rows;

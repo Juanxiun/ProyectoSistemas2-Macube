@@ -2,16 +2,6 @@ interface DataLogin {
     ci?: number;
     password?: string;
   }
-  interface DataRegister {
-    ci?: number;
-    extension?: string;
-    nombres?: string;
-    apellidos?: string;
-    telefono1?: number;
-    telefono2?: number;
-    correo?: string;
-    pass?: string;
-  }
   export function ValLogin({ ci, password }: DataLogin): Promise<string> {
     try {
       if (ci === undefined || password === undefined) {
@@ -47,7 +37,7 @@ interface DataLogin {
       return Promise.resolve("Error en la validación.");
     }
   }
-  
+
   export function ValRegister({
     ci,
     extension,
@@ -126,4 +116,5 @@ interface DataLogin {
       return Promise.resolve("Error en la validación.");
     }
   }
+
   

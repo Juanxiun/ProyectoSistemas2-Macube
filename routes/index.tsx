@@ -8,6 +8,7 @@ import CartPres from "../islands/CartPres.tsx";
 interface Data {
   isAllowed: boolean;
   userdata: number;
+  userRol: "cli" | "arq";
 }
 
 export const handler: Handlers = {
@@ -16,15 +17,17 @@ export const handler: Handlers = {
 
     let userdata = 0;
     let isAllowed = false;
+    let userRol = "";
 
     if (cookies.auth) {
       try {
         const decodedAuth = decodeURIComponent(cookies.auth);
         const authData = JSON.parse(decodedAuth);
 
-        if (authData && authData.ci) {
+        if (authData && authData.ci && authData.tipo) {
           userdata = authData.ci;
           isAllowed = true;
+          userRol = authData.tipo;
         }
       } catch (error) {
         console.log("Error parsing auth cookie:", error);
@@ -34,14 +37,16 @@ export const handler: Handlers = {
     return ctx.render({
       isAllowed,
       userdata,
+      userRol,
     });
   },
 };
 
 export default function Home({ data }: PageProps<Data>) {
+  console.log(data.userRol);
   return (
     <div class="main-index">
-      <SiderBar userAllow={data.isAllowed} ci={data.userdata} />
+      <SiderBar userAllow={data.isAllowed} ci={data.userdata} isUser={data.userRol}/>
 
       <div class="main-index-in">
         <div class="fixed w-full">
