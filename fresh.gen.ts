@@ -6,10 +6,12 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_CliApi_cliente from "./routes/api/CliApi/cliente.ts";
 import * as $api_ProyApi_proyectos from "./routes/api/ProyApi/proyectos.ts";
+import * as $api_cliente from "./routes/api/cliente.ts";
 import * as $api_joke from "./routes/api/joke.ts";
+import * as $api_middleware from "./routes/api/middleware.ts";
+import * as $api_registro from "./routes/api/registro.ts";
 import * as $api_sessions from "./routes/api/sessions.ts";
 import * as $index from "./routes/index.tsx";
-import * as $proyectos_create from "./routes/proyectos/create.tsx";
 import * as $proyectos_index from "./routes/proyectos/index.tsx";
 import * as $proyectos_list_id_ from "./routes/proyectos/list/[id].tsx";
 import * as $sesion_login from "./routes/sesion/login.tsx";
@@ -17,6 +19,10 @@ import * as $sesion_logout from "./routes/sesion/logout.ts";
 import * as $CartPres from "./islands/CartPres.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import * as $FormLogin from "./islands/FormLogin.tsx";
+import * as $sesion_logout from "./routes/sesion/logout.ts";
+import * as $CartPres from "./islands/CartPres.tsx";
+import * as $Counter from "./islands/Counter.tsx";
+import * as $FormRegister from "./islands/FormRegister.tsx";
 import * as $MainIsland from "./islands/MainIsland.tsx";
 import * as $NavBar from "./islands/NavBar.tsx";
 import * as $ProyNew from "./islands/ProyNew.tsx";
@@ -31,10 +37,12 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/api/CliApi/cliente.ts": $api_CliApi_cliente,
     "./routes/api/ProyApi/proyectos.ts": $api_ProyApi_proyectos,
+    "./routes/api/cliente.ts": $api_cliente,
     "./routes/api/joke.ts": $api_joke,
+    "./routes/api/middleware.ts": $api_middleware,
+    "./routes/api/registro.ts": $api_registro,
     "./routes/api/sessions.ts": $api_sessions,
     "./routes/index.tsx": $index,
-    "./routes/proyectos/create.tsx": $proyectos_create,
     "./routes/proyectos/index.tsx": $proyectos_index,
     "./routes/proyectos/list/[id].tsx": $proyectos_list_id_,
     "./routes/sesion/login.tsx": $sesion_login,
@@ -44,6 +52,7 @@ const manifest = {
     "./islands/CartPres.tsx": $CartPres,
     "./islands/Counter.tsx": $Counter,
     "./islands/FormLogin.tsx": $FormLogin,
+    "./islands/FormRegister.tsx": $FormRegister,
     "./islands/MainIsland.tsx": $MainIsland,
     "./islands/NavBar.tsx": $NavBar,
     "./islands/ProyNew.tsx": $ProyNew,
