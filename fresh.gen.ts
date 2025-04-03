@@ -5,13 +5,18 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_ProyApi_proyectos from "./routes/api/ProyApi/proyectos.ts";
+import * as $api_cliente from "./routes/api/cliente.ts";
 import * as $api_joke from "./routes/api/joke.ts";
 import * as $api_middleware from "./routes/api/middleware.ts";
+import * as $api_registro from "./routes/api/registro.ts";
 import * as $api_sessions from "./routes/api/sessions.ts";
 import * as $index from "./routes/index.tsx";
+import * as $logout from "./routes/logout.ts";
 import * as $proyectos_index from "./routes/proyectos/index.tsx";
+import * as $register from "./routes/register.tsx";
 import * as $sesion_logout from "./routes/sesion/logout.ts";
 import * as $Counter from "./islands/Counter.tsx";
+import * as $FormRegister from "./islands/FormRegister.tsx";
 import * as $MainIsland from "./islands/MainIsland.tsx";
 import * as $NavBar from "./islands/NavBar.tsx";
 import * as $SiderBar from "./islands/SiderBar.tsx";
@@ -22,15 +27,20 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/api/ProyApi/proyectos.ts": $api_ProyApi_proyectos,
+    "./routes/api/cliente.ts": $api_cliente,
     "./routes/api/joke.ts": $api_joke,
     "./routes/api/middleware.ts": $api_middleware,
+    "./routes/api/registro.ts": $api_registro,
     "./routes/api/sessions.ts": $api_sessions,
     "./routes/index.tsx": $index,
+    "./routes/logout.ts": $logout,
     "./routes/proyectos/index.tsx": $proyectos_index,
+    "./routes/register.tsx": $register,
     "./routes/sesion/logout.ts": $sesion_logout,
   },
   islands: {
     "./islands/Counter.tsx": $Counter,
+    "./islands/FormRegister.tsx": $FormRegister,
     "./islands/MainIsland.tsx": $MainIsland,
     "./islands/NavBar.tsx": $NavBar,
     "./islands/SiderBar.tsx": $SiderBar,
