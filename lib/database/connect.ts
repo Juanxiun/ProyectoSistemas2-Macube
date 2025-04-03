@@ -9,7 +9,6 @@ const db = new Client({
 });
 
 try{
-  db.connect();
   console.log("Conexion a la base de datos: " + Deno.env.get("DB_NAME")  +" exitoso!! \nbienvenido: "+ Deno.env.get("DB_USER"));
 
 }catch(e){
