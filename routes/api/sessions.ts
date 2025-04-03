@@ -7,6 +7,7 @@ import { isValidNumber } from "$std/semver/_shared.ts";
 export const handler: Handlers = {
   async POST(req) {
     try {
+
       const form = await req.formData();
       const ci = form.get("ci")?.toString()?.trim();
       const pass = form.get("pass")?.toString();
