@@ -1,5 +1,6 @@
-import { MOD_PROYECTOS } from "../../database/models/proyectoModel.ts";
+import { MOD_PROYECTOS } from "../../database/models/proyectos/proyectoModel.ts";
 import { db } from "../../database/connect.ts";
+
 
 let proyectosList: MOD_PROYECTOS[] = [];
 const query = db;
@@ -38,14 +39,13 @@ export const getProyectos = async (id?: number): Promise<MOD_PROYECTOS[]> => {
 export const postProyectos = async (data: MOD_PROYECTOS): Promise<string> => {
   try {
     await query.queryObject(
-      "INSERT INTO proyectos (cicli, codearq, nombre, tipo, inicio, final, imagen) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+      "INSERT INTO proyectos (cicli, codearq, nombre, tipo, inicio, imagen) VALUES ($1, $2, $3, $4, $5, $6)",
       [
         data.cicli,
         data.codearq,
         data.nombre,
         data.tipo,
         data.inicio,
-        data.final,
         data.imagen,
       ],
     );
@@ -92,3 +92,5 @@ export const deleteProyectos = async (id: number): Promise<string> => {
     return ("failet: \n" + err);
   }
 };
+
+

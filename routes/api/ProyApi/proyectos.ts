@@ -1,11 +1,19 @@
 import { Handlers } from "$fresh/server.ts";
-import { MOD_PROYECTOS } from "../../../lib/database/models/proyectoModel.ts";
+import { MOD_PROYECTOS } from "../../../lib/database/models/proyectos/proyectoModel.ts";
 import {
   deleteProyectos,
   getProyectos,
   postProyectos,
   putProyectos,
 } from "../../../lib/services/proyecto/proyectoService.ts";
+import { uint8ArrayToBase64 } from "../../../lib/utils/converFile.ts";
+
+const onBase64 = (image: Uint8Array ) => {
+  const decoder = new TextDecoder('utf8');
+  const base64 = btoa(decoder.decode(image));
+  const result = `data:image/jpeg;base64,${base64}`
+  return result;
+}
 
 export const handler: Handlers = {
   //ver proyectos
@@ -13,25 +21,22 @@ export const handler: Handlers = {
     try {
       const url = new URL(req.url);
       const id = Number(url.searchParams.get("id"));
-
-      if (id && id > 0) {
-        const proy: MOD_PROYECTOS[] = await getProyectos(id);
-
-        if (proy.length > 0) {
-          return new Response(JSON.stringify(proy), {
-            headers: { "Content-type": "application/json" },
-          });
-        }
-        return new Response(
-          JSON.stringify({ error: "No existe el proyecto" }),
-          {
-            status: 404,
-          },
-        );
+  
+      let proyectos: MOD_PROYECTOS[] = [];
+      const proy = id && id > 0 ? await getProyectos(id) : await getProyectos();
+  
+      if (proy) {
+        proyectos = proy.map(proyecto => ({
+          ...proyecto,
+          imagen: proyecto.imagen 
+            ? typeof proyecto.imagen === 'object' 
+              ? uint8ArrayToBase64(proyecto.imagen) 
+              : proyecto.imagen
+            : ""
+        }));
       }
-
-      const proy: MOD_PROYECTOS[] = await getProyectos();
-      return new Response(JSON.stringify(proy), {
+  
+      return new Response(JSON.stringify(proyectos), {
         headers: { "Content-Type": "application/json" },
       });
     } catch (err) {
@@ -41,30 +46,30 @@ export const handler: Handlers = {
         {
           status: 500,
           headers: { "Content-Type": "application/json" },
-        },
+        }
       );
     }
-  },
+  }
+  ,
 
   //crear proyectos
   async POST(req) {
     try {
       const body = await req.json();
-      const { cicli, codearq, nombre, tipo, inicio, final, imagen } = body;
+      const { cicli, codearq, nombre, tipo, inicio, imagen, habilitado } = body;
 
-      const dateInit = fechasConvert(inicio);
-      const dateFin = fechasConvert(final);
-
+      //const dateInit = fechasConvert(inicio);
+      //const dateFin = fechasConvert(final);
+      
       const newProyecto: MOD_PROYECTOS = {
         id: 0,
         cicli,
         codearq,
         nombre,
         tipo,
-        inicio: new Date(dateInit),
-        final: new Date(dateFin),
+        inicio,
         imagen,
-        habilitado: 1,
+        habilitado,
       };
 
       const regist = await postProyectos(newProyecto);
@@ -85,7 +90,6 @@ export const handler: Handlers = {
         JSON.stringify({ error: "Internal Server Error: \n" + err }),
         {
           status: 500,
-          headers: { "Content-Type": "application/json" },
         },
       );
     }
@@ -95,7 +99,7 @@ export const handler: Handlers = {
   async PUT(req) {
     try {
       const body = await req.json();
-      const { id, cicli, codearq, nombre, tipo, inicio, final, imagen } = body;
+      const { id, cicli, codearq, nombre, tipo, inicio, final, imagen} = body;
       const dateInit = fechasConvert(inicio);
       const dateFin = fechasConvert(final);
 

@@ -51,15 +51,15 @@ function SiderInit() {
 
         <Navlink
           id="pro-ini"
-          url="/proyecto/inicio"
-          text="VER PROYECTOS"
+          url="/proyectos/"
+          text="LISTAR PROYECTOS"
           styleCls={`link-s `}
         />
 
         <Navlink
           id="pro-sel"
-          url="/proyecto/select"
-          text="SELECCIONAR"
+          url="/proyectos/create"
+          text="CREAR PROYECTOS"
           styleCls={`link-s `}
         />
 

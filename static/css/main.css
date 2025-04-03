@@ -17,26 +17,24 @@ body{
 .main-index{
     @apply
         h-screen
-        flex flex-row 
-        justify-between
+        flex flex-row justify-between
 
 }
 
 .main-index-in{
     @apply
-        my-8 
-        w-full 
-
+        w-full
+        bg-[#c7c7c7]
+        my-4
+        rounded-tl-3xl
+        
 }
 
 .main-index-a{
     @apply
-        h-5/6
         overflow-y-auto
-        my-3 ml-10
-        bg-gradient-to-r from-white to-[#e4c36f]
-        rounded-l-3xl
-
+        w-full
+        h-full
         /*desplazamiento*/
         [&::-webkit-scrollbar]:w-2
         [&::-webkit-scrollbar-track]:bg-transparent
@@ -49,6 +47,14 @@ body{
         text-gray-400 hover:text-gray-500
 
 }
+
+.main-index-a-count{
+    @apply 
+        h-full
+        flex flex-row
+        justify-between align-middle items-center
+}
+
 
 .main-index-b{
     @apply

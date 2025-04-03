@@ -1,5 +1,5 @@
 interface dataProps {
-  title: string;
+  title?: string;
   styleCls?: string;
 }
 
