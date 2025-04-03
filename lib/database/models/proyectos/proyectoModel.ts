@@ -7,7 +7,7 @@ export interface MOD_PROYECTOS{
     tipo: string;
     inicio: Date;
     final?: Date;
-    imagen: string;
+    imagen: Uint8Array | string;
     habilitado: number;
 }
 

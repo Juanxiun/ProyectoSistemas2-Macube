@@ -1,8 +1,8 @@
 import { NavBar } from "../../islands/NavBar.tsx";
+import { ProyNew } from "../../islands/ProyNew.tsx";
 import { SiderBar } from "../../islands/SiderBar.tsx";
-import { ProyView } from "../../islands/ProyView.tsx";
 
-export default function ProyHome() {
+export default function proyCreate() {
   return (
     <main class="main-index">
       <SiderBar userAllow />
@@ -13,7 +13,7 @@ export default function ProyHome() {
         </div>
         <div class="main-index-a">
           <div class="main-index-a-count">
-            <ProyView />
+            <ProyNew />
           </div>
         </div>
       </div>

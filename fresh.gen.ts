@@ -11,14 +11,16 @@ import * as $api_middleware from "./routes/api/middleware.ts";
 import * as $api_registro from "./routes/api/registro.ts";
 import * as $api_sessions from "./routes/api/sessions.ts";
 import * as $index from "./routes/index.tsx";
-import * as $logout from "./routes/logout.ts";
 import * as $proyectos_index from "./routes/proyectos/index.tsx";
-import * as $register from "./routes/register.tsx";
 import * as $sesion_logout from "./routes/sesion/logout.ts";
+import * as $CartPres from "./islands/CartPres.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import * as $FormRegister from "./islands/FormRegister.tsx";
 import * as $MainIsland from "./islands/MainIsland.tsx";
 import * as $NavBar from "./islands/NavBar.tsx";
+import * as $ProyNew from "./islands/ProyNew.tsx";
+import * as $ProyView from "./islands/ProyView.tsx";
+import * as $ProyViewID from "./islands/ProyViewID.tsx";
 import * as $SiderBar from "./islands/SiderBar.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
@@ -33,16 +35,18 @@ const manifest = {
     "./routes/api/registro.ts": $api_registro,
     "./routes/api/sessions.ts": $api_sessions,
     "./routes/index.tsx": $index,
-    "./routes/logout.ts": $logout,
     "./routes/proyectos/index.tsx": $proyectos_index,
-    "./routes/register.tsx": $register,
     "./routes/sesion/logout.ts": $sesion_logout,
   },
   islands: {
+    "./islands/CartPres.tsx": $CartPres,
     "./islands/Counter.tsx": $Counter,
     "./islands/FormRegister.tsx": $FormRegister,
     "./islands/MainIsland.tsx": $MainIsland,
     "./islands/NavBar.tsx": $NavBar,
+    "./islands/ProyNew.tsx": $ProyNew,
+    "./islands/ProyView.tsx": $ProyView,
+    "./islands/ProyViewID.tsx": $ProyViewID,
     "./islands/SiderBar.tsx": $SiderBar,
   },
   baseUrl: import.meta.url,

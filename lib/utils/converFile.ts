@@ -1,4 +1,8 @@
-export async function convertFileToBytea(file: File): Promise<Uint8Array> {
-    const arrayBuffer = await file.arrayBuffer();
-    return new Uint8Array(arrayBuffer);
+export function uint8ArrayToBase64(uint8Array: Uint8Array): string {
+  let binary = '';
+  const len = uint8Array.byteLength;
+  for (let i = 0; i < len; i++) {
+    binary += String.fromCharCode(uint8Array[i]);
+  }
+  return btoa(binary);
 }
