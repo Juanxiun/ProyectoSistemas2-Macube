@@ -1,4 +1,5 @@
 import { Handlers } from "$fresh/server.ts";
+import { getCookies } from "$std/http/cookie.ts";
 import { MOD_PROYECTOS } from "../../../lib/database/models/proyectos/proyectoModel.ts";
 import {
   deleteProyectos,
@@ -21,9 +22,23 @@ export const handler: Handlers = {
     try {
       const url = new URL(req.url);
       const id = Number(url.searchParams.get("id"));
+
+      const cookies = getCookies(req.headers);
+      
+      let ci = 0;
+
+      if(cookies.auth){
+        const decodeAuth = decodeURIComponent(cookies.auth);
+        const authCi = JSON.parse(decodeAuth)
+
+        if(authCi && authCi.ci){
+          ci = authCi.ci;
+        }
+      }
+
   
       let proyectos: MOD_PROYECTOS[] = [];
-      const proy = id && id > 0 ? await getProyectos(id) : await getProyectos();
+      const proy = id && id > 0 ? await getProyectos(ci.toString(), id) : await getProyectos(ci.toString());
   
       if (proy) {
         proyectos = proy.map(proyecto => ({

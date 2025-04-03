@@ -19,7 +19,7 @@ const convertImageToBase64 = (file: File): Promise<string> => {
   });
 };
 
-export function ProyNew() {
+export function ProyNew({code}: {code:string}) {
   const getLocalDateTime = () => {
     const now = new Date();
     const offset = now.getTimezoneOffset() * 60000;
@@ -56,7 +56,7 @@ export function ProyNew() {
         const _data: MOD_PROYECTOS = {
           id: 0,
           cicli: 76789876,
-          codearq: "JA77JU14",
+          codearq: code,
           nombre,
           tipo,
           inicio: new Date(),

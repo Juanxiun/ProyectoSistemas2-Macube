@@ -38,12 +38,13 @@ export const handler: Handlers = {
 
       // Configurar cookie
       const headers = new Headers();
-      const userData = { ci, nombre: nombres };
-      const encodedData = encodeURIComponent(JSON.stringify(userData));
-
+      
       setCookie(headers, {
         name: "auth",
-        value: encodedData,
+        value: encodeURIComponent(JSON.stringify({
+          codigo,
+          tipo: "arq"
+        })),
         maxAge: 60 * 60 * 24 * 7,
         sameSite: "Lax",
         domain: url.hostname,
