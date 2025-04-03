@@ -24,7 +24,7 @@ export function NavBar({ isAllowed, ci }: Data) {
   };
 
   return (
-    <nav>
+    <nav class="NavBar">
       <div className="NavBar-dx">
         <div className="div1-n">
           {isAllowed? <p>BIENVENIDO {ci}</p> : ("NO LOGUEADO 0  /\ 0")}
