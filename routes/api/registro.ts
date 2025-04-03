@@ -9,31 +9,30 @@ export const handler: Handlers = {
 
     try {
       // Extracción de datos
+      const codigo = formData.get("codigo")?.toString() || "";
       const ci = formData.get("ci")?.toString() || "";
       const extension = formData.get("extension")?.toString() || "";
       const nombres = formData.get("nombres")?.toString() || "";
       const apellidos = formData.get("apellidos")?.toString() || "";
       const telefono = formData.get("telefono")?.toString() || "";
-      const telefono2 = formData.get("telefono2")?.toString();
       const correo = formData.get("correo")?.toString();
       const pass = formData.get("pass")?.toString() || "";
 
       // Inserción en base de datos
       await db.queryObject(`
-        INSERT INTO clientes 
-          (ci, extension, nombres, apellidos, telefono, telefono2, correo, pass, referencia, habilitado) 
+        INSERT INTO arquitectos 
+          (codigo, ci, extension, nombres, apellidos, telefono, correo, pass, habilitado) 
         VALUES 
-          ($1, $2, $3, $4, $5, $6, $7, $8, $9, 1)`,
+          ($1, $2, $3, $4, $5, $6, $7, $8, 1)`,
         [
+          codigo.toString(),
           ci, 
           extension, 
           nombres, 
           apellidos, 
           telefono, 
-          telefono2 || null, 
           correo || null, 
-          pass, 
-          null
+          pass,
         ]
       );
 

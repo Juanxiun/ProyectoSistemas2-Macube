@@ -7,11 +7,11 @@ export default function FormularioRegistro() {
     event.preventDefault();
     const form = event.currentTarget as HTMLFormElement;
     const formData = new FormData(form);
-  
+
     try {
       const res = await fetch("/api/registro", {
         method: "POST",
-        body: formData
+        body: formData,
       });
 
       if (!res.ok) {
@@ -22,21 +22,40 @@ export default function FormularioRegistro() {
       setMensaje("✅ Registro exitoso. Redirigiendo...");
       setTimeout(() => globalThis.location.href = "/", 1500);
     } catch (error) {
-      setMensaje(`❌ ${error instanceof Error ? error.message : "Error desconocido"}`);
+      setMensaje(
+        `❌ ${error instanceof Error ? error.message : "Error desconocido"}`,
+      );
     }
   }
 
   return (
     <form onSubmit={handleSubmit} class="space-y-4">
       {mensaje && (
-        <div class={`p-3 rounded-md ${
-          mensaje.includes("✅") ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
-        }`}>
+        <div
+          class={`p-3 rounded-md ${
+            mensaje.includes("✅")
+              ? "bg-green-100 text-green-800"
+              : "bg-red-100 text-red-800"
+          }`}
+        >
           {mensaje}
         </div>
       )}
 
       <div class="space-y-4">
+        {/* CI */}
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Cédula de Identidad *
+          </label>
+          <input
+            type="text"
+            name="codigo"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
         {/* CI */}
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">
@@ -112,16 +131,7 @@ export default function FormularioRegistro() {
               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">
-              Teléfono secundario
-            </label>
-            <input
-              type="tel"
-              name="telefono2"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+          
         </div>
 
         {/* Correo y Contraseña */}
