@@ -1,0 +1,25 @@
+.input_elm{
+    @apply
+        py-2
+        px-2
+        w-3/4
+        flex flex-col
+        justify-between
+}
+
+.input_elm label{
+    @apply
+        text-xl
+        text-center
+        uppercase
+}
+
+.input_elm input{
+    @apply
+        w-full
+        px-4 py-3
+        rounded-3xl
+        focus:outline-none
+        focus:ring-0
+        appearance-none
+}

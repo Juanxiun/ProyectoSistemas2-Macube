@@ -4,70 +4,108 @@
 
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
-import * as $api_CliApi_cliente from "./routes/api/CliApi/cliente.ts";
-import * as $api_ProyApi_arquitectoGet from "./routes/api/ProyApi/arquitectoGet.ts";
-import * as $api_ProyApi_proyectos from "./routes/api/ProyApi/proyectos.ts";
-import * as $api_arquitectoRegister from "./routes/api/arquitectoRegister.ts";
-import * as $api_arquitectoSesions from "./routes/api/arquitectoSesions.ts";
-import * as $api_arquitectoUpdate from "./routes/api/arquitectoUpdate.ts";
-import * as $api_cliente from "./routes/api/cliente.ts";
+import * as $_middleware from "./routes/_middleware.ts";
+import * as $api_client_clientView from "./routes/api/client/clientView.ts";
 import * as $api_joke from "./routes/api/joke.ts";
-import * as $api_registro from "./routes/api/registro.ts";
-import * as $api_sessions from "./routes/api/sessions.ts";
+import * as $api_proy_Proy from "./routes/api/proy/Proy.ts";
+import * as $api_proy_edit_editProy from "./routes/api/proy/edit/editProy.ts";
+import * as $api_proy_edit_editProyDo from "./routes/api/proy/edit/editProyDo.ts";
+import * as $api_proy_edit_editProyFa from "./routes/api/proy/edit/editProyFa.ts";
+import * as $api_proy_edit_editProyIn from "./routes/api/proy/edit/editProyIn.ts";
+import * as $api_proy_edit_editProyPa from "./routes/api/proy/edit/editProyPa.ts";
+import * as $api_proy_new_newProy from "./routes/api/proy/new/newProy.ts";
+import * as $api_proy_new_newProyDo from "./routes/api/proy/new/newProyDo.ts";
+import * as $api_proy_new_newProyFa from "./routes/api/proy/new/newProyFa.ts";
+import * as $api_proy_new_newProyIn from "./routes/api/proy/new/newProyIn.ts";
+import * as $api_proy_new_newProyPa from "./routes/api/proy/new/newProyPa.ts";
+import * as $api_proy_view_proyDoID from "./routes/api/proy/view/proyDoID.ts";
+import * as $api_proy_view_proyFaID from "./routes/api/proy/view/proyFaID.ts";
+import * as $api_proy_view_proyID from "./routes/api/proy/view/proyID.ts";
+import * as $api_proy_view_proyInID from "./routes/api/proy/view/proyInID.ts";
+import * as $api_proy_view_proyPaID from "./routes/api/proy/view/proyPaID.ts";
+import * as $api_session_login from "./routes/api/session/login.ts";
+import * as $api_session_registro from "./routes/api/session/registro.ts";
+import * as $estructura from "./routes/estructura.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $proyectos_view_ from "./routes/proyectos/[view].tsx";
 import * as $proyectos_create from "./routes/proyectos/create.tsx";
 import * as $proyectos_index from "./routes/proyectos/index.tsx";
-import * as $proyectos_list_id_ from "./routes/proyectos/list/[id].tsx";
-import * as $register from "./routes/register.tsx";
-import * as $sesion_login from "./routes/sesion/login.tsx";
-import * as $sesion_logout from "./routes/sesion/logout.ts";
-import * as $CartPres from "./islands/CartPres.tsx";
-import * as $Counter from "./islands/Counter.tsx";
-import * as $FormArquitectoRegister from "./islands/FormArquitectoRegister.tsx";
-import * as $FormLogin from "./islands/FormLogin.tsx";
-import * as $FormRegister from "./islands/FormRegister.tsx";
-import * as $MainIsland from "./islands/MainIsland.tsx";
-import * as $NavBar from "./islands/NavBar.tsx";
-import * as $ProyNew from "./islands/ProyNew.tsx";
-import * as $ProyView from "./islands/ProyView.tsx";
-import * as $ProyViewID from "./islands/ProyViewID.tsx";
-import * as $SiderBar from "./islands/SiderBar.tsx";
+import * as $session_login from "./routes/session/login.tsx";
+import * as $session_logout from "./routes/session/logout.ts";
+import * as $session_registro from "./routes/session/registro.tsx";
+import * as $forms_FormLogin from "./islands/forms/FormLogin.tsx";
+import * as $forms_RegisterForm from "./islands/forms/RegisterForm.tsx";
+import * as $home_ContentHome from "./islands/home/ContentHome.tsx";
+import * as $home_ContentHomeC from "./islands/home/ContentHomeC.tsx";
+import * as $home_ContentHomeP from "./islands/home/ContentHomeP.tsx";
+import * as $layout_NavBar from "./islands/layout/NavBar.tsx";
+import * as $layout_SiderBar from "./islands/layout/SiderBar.tsx";
+import * as $proyecto_ProyView from "./islands/proyecto/ProyView.tsx";
+import * as $proyecto_create_ProFaCreate from "./islands/proyecto/create/ProFaCreate.tsx";
+import * as $proyecto_create_ProInCreate from "./islands/proyecto/create/ProInCreate.tsx";
+import * as $proyecto_create_ProPaCreate from "./islands/proyecto/create/ProPaCreate.tsx";
+import * as $proyecto_create_ProyCreate from "./islands/proyecto/create/ProyCreate.tsx";
+import * as $proyecto_create_ProyDoCreate from "./islands/proyecto/create/ProyDoCreate.tsx";
+import * as $proyecto_viewID_ProyDoViewID from "./islands/proyecto/viewID/ProyDoViewID.tsx";
+import * as $proyecto_viewID_ProyFaViewID from "./islands/proyecto/viewID/ProyFaViewID.tsx";
+import * as $proyecto_viewID_ProyInViewID from "./islands/proyecto/viewID/ProyInViewID.tsx";
+import * as $proyecto_viewID_ProyPaViewID from "./islands/proyecto/viewID/ProyPaViewID.tsx";
+import * as $proyecto_viewID_ProyViewID from "./islands/proyecto/viewID/ProyViewID.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
-    "./routes/api/CliApi/cliente.ts": $api_CliApi_cliente,
-    "./routes/api/ProyApi/arquitectoGet.ts": $api_ProyApi_arquitectoGet,
-    "./routes/api/ProyApi/proyectos.ts": $api_ProyApi_proyectos,
-    "./routes/api/arquitectoRegister.ts": $api_arquitectoRegister,
-    "./routes/api/arquitectoSesions.ts": $api_arquitectoSesions,
-    "./routes/api/arquitectoUpdate.ts": $api_arquitectoUpdate,
-    "./routes/api/cliente.ts": $api_cliente,
+    "./routes/_middleware.ts": $_middleware,
+    "./routes/api/client/clientView.ts": $api_client_clientView,
     "./routes/api/joke.ts": $api_joke,
-    "./routes/api/registro.ts": $api_registro,
-    "./routes/api/sessions.ts": $api_sessions,
+    "./routes/api/proy/Proy.ts": $api_proy_Proy,
+    "./routes/api/proy/edit/editProy.ts": $api_proy_edit_editProy,
+    "./routes/api/proy/edit/editProyDo.ts": $api_proy_edit_editProyDo,
+    "./routes/api/proy/edit/editProyFa.ts": $api_proy_edit_editProyFa,
+    "./routes/api/proy/edit/editProyIn.ts": $api_proy_edit_editProyIn,
+    "./routes/api/proy/edit/editProyPa.ts": $api_proy_edit_editProyPa,
+    "./routes/api/proy/new/newProy.ts": $api_proy_new_newProy,
+    "./routes/api/proy/new/newProyDo.ts": $api_proy_new_newProyDo,
+    "./routes/api/proy/new/newProyFa.ts": $api_proy_new_newProyFa,
+    "./routes/api/proy/new/newProyIn.ts": $api_proy_new_newProyIn,
+    "./routes/api/proy/new/newProyPa.ts": $api_proy_new_newProyPa,
+    "./routes/api/proy/view/proyDoID.ts": $api_proy_view_proyDoID,
+    "./routes/api/proy/view/proyFaID.ts": $api_proy_view_proyFaID,
+    "./routes/api/proy/view/proyID.ts": $api_proy_view_proyID,
+    "./routes/api/proy/view/proyInID.ts": $api_proy_view_proyInID,
+    "./routes/api/proy/view/proyPaID.ts": $api_proy_view_proyPaID,
+    "./routes/api/session/login.ts": $api_session_login,
+    "./routes/api/session/registro.ts": $api_session_registro,
+    "./routes/estructura.tsx": $estructura,
     "./routes/index.tsx": $index,
+    "./routes/proyectos/[view].tsx": $proyectos_view_,
     "./routes/proyectos/create.tsx": $proyectos_create,
     "./routes/proyectos/index.tsx": $proyectos_index,
-    "./routes/proyectos/list/[id].tsx": $proyectos_list_id_,
-    "./routes/register.tsx": $register,
-    "./routes/sesion/login.tsx": $sesion_login,
-    "./routes/sesion/logout.ts": $sesion_logout,
+    "./routes/session/login.tsx": $session_login,
+    "./routes/session/logout.ts": $session_logout,
+    "./routes/session/registro.tsx": $session_registro,
   },
   islands: {
-    "./islands/CartPres.tsx": $CartPres,
-    "./islands/Counter.tsx": $Counter,
-    "./islands/FormArquitectoRegister.tsx": $FormArquitectoRegister,
-    "./islands/FormLogin.tsx": $FormLogin,
-    "./islands/FormRegister.tsx": $FormRegister,
-    "./islands/MainIsland.tsx": $MainIsland,
-    "./islands/NavBar.tsx": $NavBar,
-    "./islands/ProyNew.tsx": $ProyNew,
-    "./islands/ProyView.tsx": $ProyView,
-    "./islands/ProyViewID.tsx": $ProyViewID,
-    "./islands/SiderBar.tsx": $SiderBar,
+    "./islands/forms/FormLogin.tsx": $forms_FormLogin,
+    "./islands/forms/RegisterForm.tsx": $forms_RegisterForm,
+    "./islands/home/ContentHome.tsx": $home_ContentHome,
+    "./islands/home/ContentHomeC.tsx": $home_ContentHomeC,
+    "./islands/home/ContentHomeP.tsx": $home_ContentHomeP,
+    "./islands/layout/NavBar.tsx": $layout_NavBar,
+    "./islands/layout/SiderBar.tsx": $layout_SiderBar,
+    "./islands/proyecto/ProyView.tsx": $proyecto_ProyView,
+    "./islands/proyecto/create/ProFaCreate.tsx": $proyecto_create_ProFaCreate,
+    "./islands/proyecto/create/ProInCreate.tsx": $proyecto_create_ProInCreate,
+    "./islands/proyecto/create/ProPaCreate.tsx": $proyecto_create_ProPaCreate,
+    "./islands/proyecto/create/ProyCreate.tsx": $proyecto_create_ProyCreate,
+    "./islands/proyecto/create/ProyDoCreate.tsx": $proyecto_create_ProyDoCreate,
+    "./islands/proyecto/viewID/ProyDoViewID.tsx": $proyecto_viewID_ProyDoViewID,
+    "./islands/proyecto/viewID/ProyFaViewID.tsx": $proyecto_viewID_ProyFaViewID,
+    "./islands/proyecto/viewID/ProyInViewID.tsx": $proyecto_viewID_ProyInViewID,
+    "./islands/proyecto/viewID/ProyPaViewID.tsx": $proyecto_viewID_ProyPaViewID,
+    "./islands/proyecto/viewID/ProyViewID.tsx": $proyecto_viewID_ProyViewID,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

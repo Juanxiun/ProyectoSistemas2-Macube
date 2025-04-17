@@ -1,61 +1,76 @@
+import { NavBar } from "../../islands/layout/NavBar.tsx";
+import { SiderBar } from "../../islands/layout/SiderBar.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getCookies } from "$std/http/cookie.ts";
-import { NavBar } from "../../islands/NavBar.tsx";
-import { ProyNew } from "../../islands/ProyNew.tsx";
-import { SiderBar } from "../../islands/SiderBar.tsx";
+import { ProyCreate } from "../../islands/proyecto/create/ProyCreate.tsx";
 
-interface Data {
-  isAllowed: boolean;
-  userdata: number;
-  userRol: "cli" | "arq";
+interface dataProps {
+  isAllow: boolean | false;
+  codigo: string | number;
+  rol: "arq" | "cli";
+  nombre: string | "";
 }
 
 export const handler: Handlers = {
-  GET(req, ctx) {
-    const cookies = getCookies(req.headers);
+  async GET(req, ctx) {
+    const Cookies = getCookies(req.headers);
 
-    let userdata = 0;
-    let isAllowed = false;
-    let userRol = "";
+    let codigo = 0;
+    let isAllow = false;
+    let rol = "";
+    let nombre = "";
 
-    if (cookies.auth) {
+    if (Cookies.auth) {
       try {
-        const decodedAuth = decodeURIComponent(cookies.auth);
+        const decodedAuth = await decodeURIComponent(Cookies.auth);
         const authData = JSON.parse(decodedAuth);
 
-        if (authData && authData.ci && authData.tipo) {
-          userdata = authData.ci;
-          isAllowed = true;
-          userRol = authData.tipo;
+        if (authData && authData.codigo && authData.rol) {
+          codigo = authData.codigo;
+          isAllow = true;
+          rol = authData.rol;
+          nombre = authData.nombre;
         }
       } catch (error) {
-        console.log("Error parsing auth cookie:", error);
+        console.log("Error al autenticar la cookie:\n", error);
       }
     }
-
     return ctx.render({
-      isAllowed,
-      userdata,
-      userRol,
+      isAllow,
+      codigo,
+      rol,
+      nombre,
     });
   },
 };
 
-
-export default function proyCreate({ data } : PageProps<Data>) {
+export default function CreateHome({ data }: PageProps<dataProps>) {
   return (
-    <main class="main-index">
-      <SiderBar userAllow />
+    <main class="h-screen w-screen flex flex-row justify-between py-4 px-2">
+      <div class="h-full w-64 py-2 px-4">
+        <SiderBar isAllow={data.isAllow} rol={data.rol} />
+      </div>
 
-      <div class="main-index-in">
-        <div class="fixed w-full">
-          <NavBar isAllowed />
+      <div class="h-full w-full flex flex-col pl-10">
+        <div class="h-32  w-full relative pt-3">
+          <NavBar isAllow={data.isAllow} nombre={data.nombre} page="proy" />
         </div>
-        <div class="main-index-a">
-          <div class="main-index-a-count">
-            <ProyNew code={data.userdata.toString()}/>
+
+        <main class="h-full w-full overflow-auto rounded-b-3xl">
+          <div class="
+                h-full w-full px-10 py-10 flex flex-row justify-between align-middle items-center bg-[#c7c7c7]
+            ">
+            <div class="
+                h-full w-1/2
+                flex justify-center align-middle items-center
+            ">
+              <ProyCreate />
+            </div>
+            <div>
+              <p>a</p>
+            </div>
           </div>
-        </div>
+        </main>
       </div>
     </main>
   );

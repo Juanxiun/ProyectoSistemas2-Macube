@@ -1,0 +1,52 @@
+.login-form{
+    @apply
+        h-full 
+        relative
+        flex  justify-center items-center align-middle
+}
+
+.login-form-cont{
+    @apply
+        h-1/2
+        bg-white/10
+        backdrop-blur-3xl
+        w-1/2 
+        py-10
+        rounded-3xl
+        flex flex-col justify-between align-middle items-center
+}
+
+.login-title{
+    @apply
+        text-3xl text-white
+}
+
+.login-form-cont-data{
+    @apply
+        h-1/2 w-full
+        flex flex-col justify-around align-middle items-center
+}
+
+.login-form-cont-btn{
+    @apply
+        w-full
+        h-1/6
+        flex flex-col  align-middle items-center
+        
+}
+
+.login-form-cont-btn button{
+    @apply
+        text-xl
+        bg-[#c7c7c7]
+        px-6 py-3
+        rounded-3xl
+        mb-6
+}
+
+.login-form-cont-btn a{
+    @apply
+        text-xl
+        text-[#c7c7c7]
+        mb-3
+}

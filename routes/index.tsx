@@ -1,106 +1,69 @@
+import { ContentHome } from "../islands/home/ContentHome.tsx";
+import { ContentHomeP } from "../islands/home/ContentHomeP.tsx";
+import { ContentHomeC } from "../islands/home/ContentHomeC.tsx";
+import { NavBar } from "../islands/layout/NavBar.tsx";
+import { SiderBar } from "../islands/layout/SiderBar.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getCookies } from "$std/http/cookie.ts";
-import { SiderBar } from "../islands/SiderBar.tsx";
-import { NavBar } from "../islands/NavBar.tsx";
-import CartPres from "../islands/CartPres.tsx";
 
-
-interface Data {
-  isAllowed: boolean;
-  userdata: number;
-  userRol: "cli" | "arq";
+interface dataProps {
+  isAllow: boolean | false;
+  codigo: string | number;
+  rol: "arq" | "cli";
+  nombre: string | "";
 }
 
 export const handler: Handlers = {
-  GET(req, ctx) {
-    const cookies = getCookies(req.headers);
+  async GET(req, ctx) {
+    const Cookies = getCookies(req.headers);
 
-    let userdata = 0;
-    let isAllowed = false;
-    let userRol = "";
+    let codigo = 0;
+    let isAllow = false;
+    let rol = "";
+    let nombre= "";
 
-    if (cookies.auth) {
+    if (Cookies.auth) {
       try {
-        const decodedAuth = decodeURIComponent(cookies.auth);
+        const decodedAuth = await decodeURIComponent(Cookies.auth);
         const authData = JSON.parse(decodedAuth);
 
-        if (authData && authData.ci && authData.tipo) {
-          userdata = authData.ci;
-          isAllowed = true;
-          userRol = authData.tipo;
+        if (authData && authData.codigo && authData.rol) {
+          codigo = authData.codigo;
+          isAllow = true;
+          rol = authData.rol;
+          nombre = authData.nombre;
         }
       } catch (error) {
-        console.log("Error parsing auth cookie:", error);
+        console.log("Error al autenticar la cookie:\n", error);
       }
     }
-
     return ctx.render({
-      isAllowed,
-      userdata,
-      userRol,
+      isAllow,
+      codigo,
+      rol,
+      nombre,
     });
   },
 };
 
-export default function Home({ data }: PageProps<Data>) {
-  console.log(data.userRol);
+export default function Home({data} : PageProps<dataProps>) {
   return (
-    <div class="main-index">
-      <SiderBar userAllow={data.isAllowed} ci={data.userdata} isUser={data.userRol}/>
-
-      <div class="main-index-in">
-        <div class="fixed w-full">
-          <NavBar isAllowed={data.isAllowed} ci={data.userdata} />
-        </div>
-
-        <div class="main-index-a">
-          <div class="main-index-a-count">
-            <CartPres
-              type="pres"
-              titulo="MACUBE"
-              titulo2="DISEÑO Y ARTE"
-              styleType="pres"
-              context="Bienvenido a macube donde CONVERTIMOS SUEÑOS EN PROYECTOS REALES"
-            />
-            <div class="pres-img">
-              <img src="/img/Multimedia.webp" alt="/xd" />
-            </div>
-          </div>
-          <div class="main-index-a-count">
-
-            <p>
-              sjakdhkas
-            </p>
-
-            <CartPres
-              type="info"
-              titulo="QUE REALIZAMOS"
-              styleType="info"
-              context="Te acompañamos en cada etapa de tu obra, 
-                       brindando asesoramiento experto y soluciones eficientes."
-            />
-          </div>
-          <div class="main-index-a-count">
-            <CartPres
-              type="cont"
-              titulo="CONTACTANOS"
-              styleType="cont"
-              context="crea una sita o ve a nuestras redes sociales"
-            />
-            <div className="w-1/2 h-full flex align-middle justify-center items-center">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d402.0718950651475!2d-68.1746618373088!3d-16.51730764803232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915edfa7633c5789%3A0xeaf5714f0184d66f!2sEl%20Alto!5e0!3m2!1ses-419!2sbo!4v1743560472663!5m2!1ses-419!2sbo"
-                width="600"
-                height="450"
-                style="border:0;"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              >
-              </iframe>
-            </div>
-          </div>
-        </div>
+    <main class="h-screen w-screen flex flex-row justify-between py-4 px-2">
+      <div class="h-full w-64 py-2 px-4">
+        <SiderBar isAllow={data.isAllow} rol={data.rol} />
       </div>
-    </div>
+
+      <div class="h-full w-full flex flex-col pl-10">
+        <div class="h-32  w-full relative pt-3">
+          <NavBar isAllow={data.isAllow} rol={data.rol} nombre={data.nombre}/>
+        </div>
+
+        <main class="h-full w-full overflow-auto rounded-b-3xl">
+          <ContentHome />
+          <ContentHomeP />
+          <ContentHomeC />
+        </main>
+      </div>
+    </main>
   );
 }

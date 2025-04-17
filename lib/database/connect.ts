@@ -1,21 +1,19 @@
-import { Client } from "https://deno.land/x/postgres@v0.19.3/mod.ts";
+import { Client } from "https://deno.land/x/mysql@v2.12.1/mod.ts";
 
-const db = new Client({
-  user: Deno.env.get("DB_USER"),
-  database: Deno.env.get("DB_NAME"),
-  hostname: Deno.env.get("DB_HOST"),
-  port: Deno.env.get("DB_PORT"),
-  password: Deno.env.get("DB_PASS"),
-});
+const db = async () => {
+    try{
+        const client = new Client();
+        await client.connect({
+            hostname: Deno.env.get("DB_HOST"),
+            username: Deno.env.get("DB_USER"),
+            db: Deno.env.get("DB_NAME"),
+            password: Deno.env.get("DB_PASS"),
+        });
+        return client;
+    }catch(e){
+        console.log("Error encontrado :v \n", e)
+        throw new Error("Error en database -> Connect -> Database mySQL");
+    }
+} 
 
-try{
-  console.log("Conexion a la base de datos: " + Deno.env.get("DB_NAME")  +" exitoso!! \nbienvenido: "+ Deno.env.get("DB_USER"));
-
-}catch(e){
-  console.error("Error en la conexion en la base de datos: \n", e);
-  throw e;
-}
-
-export {db};
-
-
+export { db };

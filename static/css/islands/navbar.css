@@ -1,0 +1,85 @@
+.navbar{
+    @apply
+        w-full h-full
+        bg-[#c7c7c7] 
+        flex flex-row
+        justify-between
+        align-middle items-center
+        absolute
+        rounded-t-3xl
+        px-4
+}
+
+.navbar_filtros{
+    @apply
+        h-1/2
+        w-2/3
+        flex flex-row
+        justify-between
+        align-middle items-center
+}
+
+.navbar_cuenta{
+    @apply
+        h-1/2
+        w-1/4
+        flex
+        justify-center
+        align-middle items-center
+}
+
+.navbar_buttom{
+    @apply
+        cursor-pointer
+        w-1/2 
+        h-10
+        bg-[#e4c36f]
+        rounded-2xl
+        px-2
+        flex flex-row
+        justify-between
+}
+
+.navbar_buttom span{
+    @apply
+        w-full h-full
+        flex align-middle items-center justify-center
+        text-center
+        text-2xl
+        uppercase
+        font-bold
+}
+
+.navbar_buttom img{
+    @apply
+        w-9 h-9
+        ml-4
+}
+
+.navbar_filtros_cont{
+    @apply
+        h-full w-9/12
+        flex flex-row justify-between
+        align-middle items-center
+}
+
+.filtro_form{
+    @apply
+        h-full
+        flex flex-row justify-between
+        align-middle items-center
+}
+
+.filtro_select{
+    @apply
+        mx-4
+        py-3 px-4
+        rounded-2xl
+}
+
+.search_elm{
+    @apply
+        h-full
+        w-full
+        flex justify-center align-middle items-center
+}

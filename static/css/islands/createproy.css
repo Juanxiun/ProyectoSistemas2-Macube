@@ -1,0 +1,123 @@
+/*registrar proyecto*/
+.form_create{
+    @apply
+        bg-black/10
+        backdrop-blur-xl
+        flex flex-col
+        justify-between
+        items-center align-middle
+        w-9/12
+        py-10
+        rounded-3xl
+}
+
+.form_create h1{
+    @apply
+        text-4xl
+        text-center
+        font-bold 
+        uppercase
+}
+
+.form_create_name{
+    @apply
+        w-9/12
+        flex flex-row 
+        justify-between align-middle items-center
+}
+
+.form_create_select{
+    @apply
+        w-1/2
+        flex flex-col
+}
+
+.form_create_select label{
+    @apply
+        text-lg 
+        uppercase
+}
+
+.form_create_select select{
+    @apply  
+        w-full
+        py-4 px-2
+        rounded-3xl
+}
+
+.form_create_img{
+    @apply
+        w-9/12 h-60
+        flex flex-col
+        justify-between
+        align-middle 
+        items-center
+        relative
+        bg-white/50
+        rounded-b-3xl
+}
+
+.form_create_img img{
+    @apply
+        h-44 w-44
+        absolute
+        bottom-5
+}
+
+.form_create_ipt{
+    @apply
+        w-full
+        flex flex-col    
+        align-middle items-center   
+}
+
+.form_create_ipt label{
+    @apply
+        text-lg 
+        uppercase
+}
+
+.form_create_ipt input{
+    @apply
+    block w-9/12 text-lg pr-4 rounded-t-3xl cursor-pointer border-2 border-white  bg-white  focus:outline-none 
+}
+
+.form_select_cli{
+    @apply
+        w-full
+        flex flex-col    
+        align-middle items-center   
+}
+
+.form_select_cli label{
+    @apply
+        text-lg 
+        uppercase
+}
+
+.form_select_cli select{
+    @apply
+    block w-9/12 text-lg pr-4 py-3 rounded-3xl cursor-pointer border-2 border-white  bg-white  focus:outline-none 
+}
+
+/*proyecto fase*/
+
+.viewproyfa_cont{
+    @apply
+        w-full h-full
+}
+
+.viewproyfa_form{
+    @apply
+        w-full h-full
+        bg-[#e4c36f]
+        rounded-3xl
+        px-4 py-6
+        overflow-x-auto
+}
+
+.viewproyfa_form_cont{
+    @apply
+        h-full w-72
+        bg-white
+}

@@ -1,0 +1,166 @@
+.contenthome{
+    @apply
+        h-full w-full
+        flex flex-row
+        justify-between 
+        align-middle
+        items-center
+        bg-[#c7c7c7]
+        px-6
+}
+
+.contenthome_title{
+    @apply
+        bg-[#658895]
+        h-1/2 w-1/3
+        rounded-3xl
+        flex flex-col
+        justify-center
+        align-middle 
+        items-center
+}
+
+.contenthome_subtitle{
+    @apply
+        text-5xl
+        font-bold
+        italic
+}
+
+.contenthome_title-xl{
+    @apply
+        text-9xl
+        underline
+}
+
+.contenthome_img{
+    @apply
+        h-3/4
+        w-1/2
+}
+
+.contenthome_img img{
+    @apply
+        h-full
+        w-full
+        bg-cover
+        rounded-3xl
+        shadow-2xl
+}
+
+/*contenedor medio de presentacion*/
+
+.contenthomep{
+    @apply
+    h-full w-full
+    flex flex-col
+    justify-between 
+    align-middle
+    items-center
+    bg-[#c7c7c7]
+    px-6
+}
+
+.contenthomep_title{
+    @apply
+        w-full
+        flex flex-col
+        align-middle items-center
+}
+
+.contenthomep_title-xl{
+    @apply
+        text-8xl
+        underline
+        font-bold
+        italic
+}
+
+.contenthome_alp{
+    @apply
+        my-10
+        w-full h-1/2
+        flex flex-row
+        justify-evenly
+        align-middle 
+        items-center
+        pt-20
+}
+
+.contenthomep_ar{
+    @apply
+        w-1/5
+        h-72
+        my-4 mt-3
+        bg-[#e4c36f]
+}
+
+.contenthomep_subtitle{
+    @apply
+        text-4xl
+        text-center
+        mb-5
+}
+
+.contenthomep_txt{
+    @apply
+        text-xl
+        text-center mx-4
+}
+
+.contenthomep_img{
+    @apply
+        h-96
+        w-full
+        px-4 py-5
+
+}
+
+.contenthomep_img img{
+    @apply
+        w-full h-full
+        overflow-hidden
+        object-cover
+        object-center
+        rounded-3xl
+        shadow-2xl
+}
+
+
+/*contenedor final de la presentacion*/
+
+.contenthomec{
+    @apply
+        h-full w-full
+        flex flex-row
+        justify-between 
+        align-middle
+        items-center
+        bg-[#c7c7c7]
+        px-6
+}
+
+.contenthomec_title{
+    @apply
+        bg-[#658895]
+        h-1/2 w-1/3
+        rounded-3xl
+        flex flex-col
+        justify-center
+        align-middle 
+        items-center
+        px-4 
+}
+
+.contenthomec_title-xl{
+    @apply
+        text-center
+        text-6xl
+        underline
+}
+
+.contenthomec_subtitle{
+    @apply
+        text-justify
+        text-3xl
+}

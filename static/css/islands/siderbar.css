@@ -1,0 +1,46 @@
+.siderbar{
+    @apply
+        h-full w-full
+        bg-white/10
+        backdrop-blur-xl
+        flex flex-col
+        justify-between
+        align-middle items-center
+        px-4 py-4
+        rounded-3xl
+}
+
+.siderbar_logo{
+    @apply
+        w-full
+        h-32
+}
+
+.siderbar_logo img{
+    @apply
+        w-full
+        h-5/6
+}
+
+.siderbar_opt{
+    @apply
+        w-full
+        h-2/3
+        flex flex-col
+        justify-evenly
+}
+
+.siderbar_log{
+    @apply
+        w-full
+        h-20
+        flex justify-center
+        cursor-pointer
+        align-middle 
+}
+
+.siderbar_log img{
+    @apply
+        w-full
+        h-5/6
+}

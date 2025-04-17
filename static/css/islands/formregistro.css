@@ -1,0 +1,39 @@
+.registro-form{
+    @apply
+        h-full
+        relative
+        flex flex-col justify-center items-center align-middle
+}
+
+.registro-form-cont-data{
+    @apply
+    h-2/3
+    bg-white/10
+    backdrop-blur-3xl
+    w-2/3 
+    py-10
+    rounded-3xl
+    flex flex-col justify-between align-middle items-center
+        
+}
+
+.registro-form-cap{
+    @apply
+        w-full
+        flex flex-row justify-stretch
+}
+
+.registro-title{
+    @apply
+        text-3xl text-white
+        mb-5
+}
+
+.registro-form-cont-btn{
+    @apply
+        text-xl
+        bg-[#c7c7c7]
+        px-6 py-3
+        rounded-3xl
+        my-6
+}

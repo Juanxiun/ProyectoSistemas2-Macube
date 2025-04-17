@@ -1,0 +1,329 @@
+.viewproy_cont{
+    @apply
+        w-1/2
+        px-10
+        relative
+}
+
+.btn-edit{
+    @apply
+        z-30
+        w-16 h-16
+        bg-[#e4c36f]
+        rounded-full
+        px-1 py-1
+        absolute
+        cursor-pointer
+        top-2
+        right-12
+}
+
+.viewproy_form{
+    @apply
+        h-full w-full
+        flex flex-row
+        justify-center align-middle items-center
+        bg-[#658895]
+        rounded-3xl
+        py-5
+}
+
+
+.viewproy_img{
+    @apply
+        h-96 w-96
+        px-3 py-4
+}
+
+.viewproy_img img{
+    @apply
+        h-full w-full
+        rounded-2xl
+}
+
+.viewproy_form_data{
+    @apply
+        h-full w-1/2
+        flex flex-col
+        justify-center 
+        align-middle
+        items-center
+}
+
+.viewproy_form_data label{
+    @apply
+        text-white
+}
+
+.viewproy_form_data_name{
+    @apply
+        w-full
+        flex flex-row
+        mx-4
+}
+
+.viewproy_form_date{
+    @apply
+        w-full
+        flex 
+        justify-center align-middle items-center
+}
+
+.viewpoy_form_img_cont{
+    @apply
+        absolute
+        top-2
+        flex 
+        justify-center 
+        align-baseline
+        items-center
+}
+
+.viewproy_form_edit_img{
+    @apply
+        text-black
+        
+}
+
+.viewproy_form_image{
+    @apply
+        relative
+}
+
+.viewproy_form_select{
+    @apply
+        w-2/3
+        flex flex-col 
+        justify-center 
+        align-middle
+        items-center
+}
+
+.viewproy_form_select label{
+    @apply
+        text-xl
+        uppercase
+        text-white
+}
+
+.viewproy_form_select select{
+    @apply
+        w-full
+        px-3 py-4
+        rounded-3xl
+
+}
+
+
+.viewmenu_proy{
+    @apply
+        w-full h-full
+        bg-[#c7c7c7]
+        px-10 py-10
+        flex flex-col 
+        lg:flex-row
+        cursor-pointer
+}
+
+.viewmenu_proy_cont{
+    @apply
+        w-80
+        h-96
+        py-3 px-3
+        bg-[#658895]
+        rounded-3xl
+        mx-10 mt-20
+}
+
+.viewmenu_proy_cont img{
+    @apply
+        w-full
+        h-64
+        rounded-2xl
+        shadow-2xl
+
+}
+
+.viewmenu_proy_data{
+    @apply
+        w-full
+        flex flex-col 
+}
+
+.viewmenu_proy_data h1{
+    @apply
+        text-center
+        text-xl
+        uppercase
+        my-1
+}
+
+.viewmenu_proy_data_des{
+    @apply
+        flex flex-row
+        justify-center
+}
+
+.viewmenu_proy_data_des p{
+    @apply
+        px-2
+
+}
+
+.viewmenu_proy_data_fecha{
+    @apply
+        px-2
+        uppercase
+        font-bold
+        text-center
+}
+
+
+
+/*estilo de las fases del proyecto*/
+
+.viewproyfa_cont{
+    @apply  
+        w-full
+        bg-[#e4c36f]
+        rounded-3xl
+        shadow-xl
+        flex flex-col 
+        justify-center 
+        align-middle items-center
+        py-10
+        relative
+}
+
+.viewproyfa_cont h1{
+    @apply
+        text-2xl 
+        uppercase
+        underline
+        font-bold
+}
+
+.btn_new_vf{
+    @apply
+        h-16 w-16
+        rounded-full
+        px-1 py-1
+        bg-[#658895]
+        absolute
+        z-30
+        top-2 right-2
+}
+
+.viewproyfa_cont_form{
+    @apply
+        relative
+        w-full
+        flex justify-center align-bottom
+}
+
+
+/*modal para crear o borrar fases de proyecto*/
+
+.viewproyfaMod_uc{
+    @apply
+        bg-white/10
+        backdrop-blur-xl
+        absolute
+        z-30
+        w-1/2
+        flex flex-col
+        shadow-xl
+        justify-center align-middle items-center
+        py-5
+        rounded-lg
+}
+
+.viewproyfaMod_uc h2{
+    @apply
+        uppercase
+        underline
+        text-2xl
+        font-bold
+        my-3
+}
+
+.createFa_fas{
+    @apply
+        w-full
+        flex flex-col
+        justify-center align-middle items-center
+}
+
+.createFa_fas label{
+    @apply
+        uppercase
+        text-xl
+        my-1
+}
+
+.createFa_fas select{
+    @apply
+        w-11/12
+        px-4 py-3
+        my-3 mx-2
+        rounded-xl
+}
+
+.createFa_des{
+    @apply
+        w-full
+        flex flex-col 
+        justify-center align-middle items-center
+}
+
+.createFa_des label{
+    @apply
+        uppercase
+        text-xl
+        my-1
+}
+
+.createFa_des input{
+    @apply
+        w-11/12
+        px-4 py-3
+        my-3 mx-2
+        rounded-xl
+}
+
+.proypa_cont{
+    @apply
+        w-full
+        h-full
+        flex justify-center align-middle items-center
+        relative
+}
+
+.proypa_cont_int{
+    @apply
+        w-11/12
+        h-64
+        rounded-3xl
+        bg-[#e4c36f]
+        shadow-xl
+}
+
+.btn_new_vP{
+    @apply
+        h-16 w-16
+        rounded-full
+        px-1 py-1
+        bg-[#658895]
+        
+        absolute
+        z-30
+        top-2 right-10  
+}
+
+.viewproyPa_cont_form{
+    @apply
+        absolute
+        w-full
+        top-4
+        flex justify-center align-middle
+}

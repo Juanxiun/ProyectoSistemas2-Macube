@@ -1,0 +1,47 @@
+
+
+.message{
+    @apply
+        absolute
+        w-1/2
+        mt-10 
+        flex justify-center align-middle items-center
+}
+
+.Message-A{
+    @apply
+        bg-red-600
+        py-4 px-6
+        text-white
+        rounded-3xl;
+    animation: animationIntro 0.5s ease-out forwards;
+}
+
+.Message-S{
+    @apply
+        bg-green-600
+        py-4 px-6
+        text-white
+        rounded-3xl;
+    animation: animationIntro 0.5s ease-out forwards;
+    
+}
+
+.message-text{
+    @apply
+        text-white
+        text-lg
+        uppercase
+}
+
+
+@keyframes animationIntro {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }

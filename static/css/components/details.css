@@ -1,0 +1,50 @@
+.details{
+    @apply
+        w-full
+        h-32
+        relative 
+}
+
+.details_title{
+    @apply
+        flex align-middle justify-center items-center cursor-pointer 
+}
+
+.details_cont{
+    @apply
+        absolute 
+        left-32
+        bottom-2
+        mx-4 
+        w-40
+        bg-black
+        backdrop-blur-2xl
+        px-3 py-2
+        shadow-lg 
+        rounded-md z-10 
+}
+
+.detail_img{
+    @apply
+        w-16 h-16
+}
+
+.detail_span{
+    @apply
+        text-center
+        text-2xl
+        text-white
+        uppercase
+        underline
+        mb-3
+}
+
+.details_a{
+    @apply
+        block 
+        px-4 
+        py-2 
+        text-xl 
+        text-white 
+        hover:text-[#e4c36f]
+}
