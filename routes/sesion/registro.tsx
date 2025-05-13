@@ -1,10 +1,10 @@
-import FormLogin from "../../islands/forms/formLogin.tsx";
+import FormRegistro from "../../islands/forms/fornRegister.tsx";
 import EstructuraPageForm from "../../islands/pages/estructura2.tsx";
 
-export default function LoginHome() {
+export default function RegistroHome() {
   return (
     <EstructuraPageForm>
-      <FormLogin />
+      <FormRegistro/>
     </EstructuraPageForm>
   );
 }

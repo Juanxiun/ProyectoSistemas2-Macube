@@ -1,6 +1,6 @@
-import EstructuraPageMain from "../islands/pages/estructura.tsx";
-import FormLogin from "../islands/forms/formLogin.tsx";
+import EstructuraPageMain from "../../islands/pages/estructura.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
+import CartProy from "../../islands/pageProy/cartProy.tsx";
 
 type CookieData = {
   codigo: string;
@@ -20,15 +20,16 @@ export const handler: Handlers<CookieData> = {
 };
 
 export default function Home({ data }: PageProps<CookieData>) {
+  //console.log(data);
   return (
     <EstructuraPageMain
-      page="other"
+      page="proy"
       nombre={data.nombre}
       isAllow={data.isAllow}
       rol={data.rol}
       codigo={data.codigo}
     >
-      <FormLogin />
+      <CartProy />
     </EstructuraPageMain>
   );
 }
