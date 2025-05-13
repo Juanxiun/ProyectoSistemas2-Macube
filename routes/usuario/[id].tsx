@@ -1,6 +1,6 @@
-import EstructuraPageMain from "../islands/pages/estructura.tsx";
-import FormLogin from "../islands/forms/formLogin.tsx";
+import EstructuraPageMain from "../../islands/pages/estructura.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
+import FormUser from "../../islands/forms/formUser.tsx";
 
 type CookieData = {
   codigo: string;
@@ -9,17 +9,24 @@ type CookieData = {
   nombre: string;
 };
 
+interface PageData extends CookieData {
+  id: string;
+}
+
 export const handler: Handlers<CookieData> = {
   async GET(req, ctx) {
     const res = await fetch(`${ctx.url.origin}/api/cookieGet`, {
       headers: req.headers,
     });
     const data = await res.json();
-    return ctx.render(data);
+
+    const id = ctx.params.id;
+
+    return ctx.render({ ...data, id });
   },
 };
 
-export default function Home({ data }: PageProps<CookieData>) {
+export default function UserHome({ data }: PageProps<PageData>) {
   return (
     <EstructuraPageMain
       page="other"
@@ -28,7 +35,8 @@ export default function Home({ data }: PageProps<CookieData>) {
       rol={data.rol}
       codigo={data.codigo}
     >
-      <FormLogin />
+      <FormUser user={data.id} />
+      
     </EstructuraPageMain>
   );
 }

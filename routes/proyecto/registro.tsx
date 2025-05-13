@@ -1,6 +1,6 @@
-import EstructuraPageMain from "../islands/pages/estructura.tsx";
-import FormLogin from "../islands/forms/formLogin.tsx";
+import EstructuraPageMain from "../../islands/pages/estructura.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
+import FormProy from "../../islands/forms/formProy.tsx";
 
 type CookieData = {
   codigo: string;
@@ -28,7 +28,7 @@ export default function Home({ data }: PageProps<CookieData>) {
       rol={data.rol}
       codigo={data.codigo}
     >
-      <FormLogin />
+      <FormProy arq={data.codigo.toString()} page="new" />
     </EstructuraPageMain>
   );
 }
