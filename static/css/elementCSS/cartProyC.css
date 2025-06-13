@@ -1,0 +1,55 @@
+.proycart_main{
+    @apply
+        lg:w-full md:w-full w-full
+        h-[265px]
+        bg-white
+        rounded-xl
+        flex flex-col
+        relative
+        lg:my-0 md:my-5 my-4
+}
+
+.proycart_main2{
+    @apply
+        lg:w-full md:w-full w-full
+        h-[410px]
+        bg-white
+        rounded-xl
+        flex flex-col
+        relative
+        lg:my-0 md:my-5 my-4
+}
+
+.proycart_main3{
+    @apply
+        lg:w-full md:w-full w-full
+        h-[720px]
+        bg-white
+        rounded-xl
+        flex flex-col
+        relative
+        lg:my-0 md:my-5 my-4
+}
+
+.proycart_title{
+    @apply
+        text-2xl
+        text-white
+        font-bold
+        text-center
+        py-4
+        w-full
+        bg-[#658895]
+        rounded-t-xl
+}   
+
+.proycart_modal{
+    @apply
+        z-40
+        absolute
+        bg-white
+        backdrop-blur-xl
+        w-full
+        top-1/2 left-0
+        rounded-b-xl
+}

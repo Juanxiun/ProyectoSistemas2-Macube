@@ -1,10 +1,10 @@
-import Login from "../../islands/FormLogin.tsx";
+import FormLogin from "../../islands/forms/formLogin.tsx";
+import EstructuraPageForm from "../../islands/pages/estructura2.tsx";
 
-export default function LoginPage() {
+export default function LoginHome() {
   return (
-    <div class="max-w-md mx-auto p-4">
-      <h1 class="text-2xl font-bold mb-4">Iniciar sesión</h1>
-      <Login />
-    </div>
+    <EstructuraPageForm>
+      <FormLogin />
+    </EstructuraPageForm>
   );
 }

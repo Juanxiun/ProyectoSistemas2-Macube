@@ -32,5 +32,5 @@ const accountArq = async (codigo: string) => {
 
 const accountCli = async (ci: number) => {
   const user = await connect.query("CALL viewCli(?)", [ci]);
-  return user[0] ?? [];
+  return user as typeClientes[] ?? [];
 };

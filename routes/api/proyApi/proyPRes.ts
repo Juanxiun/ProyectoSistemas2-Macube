@@ -1,5 +1,6 @@
 import { Handlers } from "$fresh/server.ts";
-import { jsonSuccess } from "../../../lib/utils/response.ts";
+import { jsonSuccess } from "../../../lib/utils/metodos/response.ts";
+import { valProyPa } from "../../../lib/utils/validation/proyPVal.ts";
 import { uptProyP } from "../../../services/proyectos/editProy.ts";
 import { newProyP } from "../../../services/proyectos/newProy.ts";
 import { viewProyP, viewProy } from "../../../services/proyectos/viewProy.ts";
@@ -46,6 +47,15 @@ export const handler: Handlers = {
           : value.toString();
       });
 
+      //validar datos
+      const val = await valProyPa(
+        data.tippag.toString(),
+        data.despag.toString(),
+        parseInt(data.monpag.toString()),
+        parseInt(idproy),
+      );
+      if (val !== "OK") return jsonSuccess({ message: val }, 400);
+
       //mandar registro => proyecto Doc
       const result = await newProyP({
         proy: parseInt(idproy),
@@ -71,7 +81,7 @@ export const handler: Handlers = {
       //constantes nevesarias
       const formData = await req.formData();
       const url = new URL(req.url);
-      const idproyI = url.searchParams.get("idproyD")?.toString() ?? "";
+      const idproyI = url.searchParams.get("idproy")?.toString() ?? "";
 
       //obtener datos => formData
       const data: Record<string, string | File> = {};

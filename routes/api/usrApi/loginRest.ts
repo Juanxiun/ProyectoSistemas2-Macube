@@ -1,7 +1,7 @@
 import { Handlers } from "$fresh/server.ts";
 import { isValidNumber } from "$std/semver/_shared.ts";
-import { valLogin } from "../../../lib/utils/userVal.ts";
-import { jsonSuccess } from "../../../lib/utils/response.ts";
+import { valLogin } from "../../../lib/utils/validation/userVal.ts";
+import { jsonSuccess } from "../../../lib/utils/metodos/response.ts";
 import { loginUser } from "../../../services/usuarios/login.ts";
 import { setCookie } from "$std/http/cookie.ts";
 

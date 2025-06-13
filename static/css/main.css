@@ -1,99 +1,28 @@
-/*primero se cargan los import :v*/
-@import url('./island.css');
-@import url('./TitleText.css');
-@import url('./Components.css');
+@import url(./layoutCSS/NavBar.css);
+@import url(./layoutCSS/SiderBar.css);
+@import url(./layoutCSS/Search.css);
+@import url(./layoutCSS/presentacionC.css);
+@import url(./elementCSS/cartProyC.css);
 
-*{
-    @apply
-        font-mono
-}
+@import url(./formCSS/loginC.css);
+@import url(./formCSS/registroC.css);
+@import url(./formCSS/proyectoF.css);
+@import url(./formCSS/usuarioS.css);
 
 body{
     @apply
+        h-screen w-screen
         bg-[#393a44]
+        font-mono
+        text-white
+        text-lg
 }
 
-/*pagina de bienvenida*/
-.main-index{
-    @apply
-        h-screen
-        flex flex-row justify-between
+.scrollbar-hide {
+    -ms-overflow-style: none;  
+    scrollbar-width: none; 
+  }
 
-}
-
-.main-index-in{
-    @apply
-        w-full
-        bg-[#c7c7c7]
-        my-4
-        rounded-tl-3xl
-        
-}
-
-.main-index-a{
-    @apply
-        overflow-y-auto
-        w-full
-        h-full
-        /*desplazamiento*/
-        [&::-webkit-scrollbar]:w-2
-        [&::-webkit-scrollbar-track]:bg-transparent
-        [&::-webkit-scrollbar-thumb]:bg-current
-        [&::-webkit-scrollbar-thumb]:rounded-full
-        [&::-webkit-scrollbar-thumb]:border-2
-        [&::-webkit-scrollbar-thumb]:border-solid
-        [&::-webkit-scrollbar-thumb]:border-transparent
-        [&::-webkit-scrollbar-thumb]:bg-clip-padding
-        text-gray-400 hover:text-gray-500
-
-}
-
-.main-index-a-count{
-    @apply 
-        h-full
-        flex flex-row
-        justify-between align-middle items-center
-}
-
-
-.main-index-b{
-    @apply
-        h-full 
-        flex flex-row
-        justify-center align-middle items-center
-}
-
-.main{
-    @apply  
-        h-screen
-        flex flex-row
-        justify-around
-        
-}
-
-.main-b-mid{
-    @apply
-        h-full 
-        flex flex-col
-        justify-center align-middle items-center
-}
-
-.ArticleMid{
-    @apply
-        w-3/4
-        text-center
-}
-
-
-.main-b-end{
-    @apply
-        h-full 
-        flex flex-col
-        justify-center align-middle items-center
-}
-
-.ArticleEnd{
-    @apply
-        w-3/4
-        text-center
-}
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }

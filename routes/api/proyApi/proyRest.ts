@@ -1,12 +1,16 @@
 import { Handlers } from "$fresh/server.ts";
 import { getCookies } from "$std/http/cookie.ts";
 import { imageFile } from "../../../lib/utils/formatImg.ts";
-import { jsonSuccess } from "../../../lib/utils/response.ts";
+import { jsonSuccess } from "../../../lib/utils/metodos/response.ts";
 import { convertTime, getTime } from "../../../lib/utils/timeFormat.ts";
+import { valProy } from "../../../lib/utils/validation/proyVal.ts";
 import { delProy } from "../../../services/proyectos/delProy.ts";
 import { uptProy } from "../../../services/proyectos/editProy.ts";
 import { newProy } from "../../../services/proyectos/newProy.ts";
-import { viewProy, viewProyIDUlt } from "../../../services/proyectos/viewProy.ts";
+import {
+  viewProy,
+  viewProyIDUlt,
+} from "../../../services/proyectos/viewProy.ts";
 
 export const handler: Handlers = {
   /*--- metodo GET => obtener proyecto / proyectos ---*/
@@ -65,7 +69,7 @@ export const handler: Handlers = {
       const authData = JSON.parse(decodedAuth);
       if (!authData || !authData.codigo) {
         return jsonSuccess({ error: "No se encontró el codigo." }, 400);
-      }else{
+      } else {
         id = authData.codigo;
       }
 
@@ -73,7 +77,20 @@ export const handler: Handlers = {
 
       //convertir imagen => base64
       const img64 = await imageFile(data.imgproy as File);
-      
+
+      //validar
+      const val = await valProy(
+        data.nomproy?.toString(),
+        data.tipproy?.toString(),
+        parseInt(data.preproy?.toString()),
+        data.depproy?.toString(),
+        data.dirproy?.toString(),
+        img64,
+      );
+
+      console.log(val);
+      if (val !== "OK") return jsonSuccess({ message: `ERROR. ${val}` }, 400);
+
       //mandar registro => proyecto
       const result = await newProy({
         arq: id,
@@ -94,7 +111,11 @@ export const handler: Handlers = {
 
       //mandar respuestas al frontend
       if (result.includes("OK")) {
-        return jsonSuccess({tipo: "post",  message: "Registro completado", result: idP }, 200);
+        return jsonSuccess({
+          tipo: "post",
+          message: "Registro completado",
+          result: idP,
+        }, 200);
       } else return jsonSuccess({ message: `ERROR. ${result}` }, 400);
     } catch (error) {
       console.log("ERROR al obtener proyectos new\n", error);

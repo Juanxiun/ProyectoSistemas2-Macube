@@ -1,6 +1,6 @@
 import { Handlers } from "$fresh/server.ts";
 import { getCookies } from "$std/http/cookie.ts";
-import { jsonSuccess } from "../../lib/utils/response.ts";
+import { jsonSuccess } from "../../lib/utils/metodos/response.ts";
 
 export const handler: Handlers = {
   async GET(req) {

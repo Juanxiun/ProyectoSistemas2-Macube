@@ -1,0 +1,30 @@
+.navbar{
+    @apply
+        flex 
+        lg:flex-row md:flex-col flex-col-reverse
+        justify-between 
+        space-x-5
+        align-middle items-center
+        w-full
+        md:px-6 px-2
+        lg:h-24  
+        bg-[#c7c7c7]/30
+        backdrop-blur-xl
+        sticky top-0
+        z-50
+}
+
+.navbar_nombre{
+    @apply
+        text-black
+}
+.navbar_btn{
+    @apply
+        bg-[#658895]
+        hover:bg-[#e4c36f]
+        hover:text-black
+        h-10
+        w-40
+        rounded-lg
+        text-xl
+}

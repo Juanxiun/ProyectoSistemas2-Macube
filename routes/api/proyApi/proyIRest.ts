@@ -1,5 +1,6 @@
 import { Handlers } from "$fresh/server.ts";
-import { jsonSuccess } from "../../../lib/utils/response.ts";
+import { jsonSuccess } from "../../../lib/utils/metodos/response.ts";
+import { valProyIn } from "../../../lib/utils/validation/proyIVal.ts";
 import { uptProyI } from "../../../services/proyectos/editProy.ts";
 import { newProyI } from "../../../services/proyectos/newProy.ts";
 import { viewProyI } from "../../../services/proyectos/viewProy.ts";
@@ -16,7 +17,7 @@ export const handler: Handlers = {
       const result = await viewProyI(parseInt(idproy));
 
       //mandar respuesta al frontend
-      if (result.length > 0) return jsonSuccess({ data: result }, 200);
+      if (result.length > 0) return jsonSuccess({ result: result }, 200);
       else return jsonSuccess({ message: "No se encontraron registros" }, 400);
     } catch (error) {
       console.log("ERROR al obtener inspecciones\n", error);
@@ -39,6 +40,16 @@ export const handler: Handlers = {
           ? value
           : value.toString();
       });
+
+      //validar datos
+      const val = await valProyIn(
+        parseInt(idproy),
+        data.tipins.toString(),
+        data.desins.toString(),
+        data.fecins.toString(),
+        1,
+      );
+      if (val !== "OK") return jsonSuccess({ message: val }, 400);
 
       //mandar registro => proyecto In
       const result = await newProyI({

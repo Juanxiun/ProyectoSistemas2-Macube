@@ -1,5 +1,6 @@
 import { Handlers } from "$fresh/server.ts";
-import { jsonSuccess } from "../../../lib/utils/response.ts";
+import { jsonSuccess } from "../../../lib/utils/metodos/response.ts";
+import { valProyFa } from "../../../lib/utils/validation/proyFVal.ts";
 import { uptProyF } from "../../../services/proyectos/editProy.ts";
 import { newProyF } from "../../../services/proyectos/newProy.ts";
 import { viewProyF } from "../../../services/proyectos/viewProy.ts";
@@ -42,7 +43,16 @@ export const handler: Handlers = {
           : value.toString();
       });
 
-      console.log(idproy, " ", data.tipfas, " ", data.nomfas, " ", data.fecfas  )
+      //console.log(idproy, " ", data.tipfas, " ", data.nomfas, " ", data.fecfas  )
+
+      //validar datos
+      const val = await valProyFa(
+        data.tipfas?.toString(),
+        data.nomfas?.toString(),
+        parseInt(idproy),
+      );
+      if (val !== "OK") return jsonSuccess({ message: val }, 400);
+
       //mandar registro => proyecto Doc
       const result = await newProyF({
         proy: parseInt(idproy),

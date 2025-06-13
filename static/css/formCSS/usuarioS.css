@@ -1,0 +1,25 @@
+.user_form{
+    @apply
+        lg:w-[750px] md:w-full w-full
+        bg-[#658895]
+        px-3 py-4
+        rounded-lg
+}
+
+.user_form_h1{
+    @apply
+        text-3xl
+        font-bold
+        text-center
+        mb-4
+}
+
+.user_form_btn{
+    @apply
+        w-full 
+        flex 
+        justify-center 
+        align-middle 
+        items-center 
+        my-4
+}

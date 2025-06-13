@@ -1,5 +1,5 @@
 import { Handlers } from "$fresh/server.ts";
-import { jsonSuccess } from "../../../lib/utils/response.ts";
+import { jsonSuccess } from "../../../lib/utils/metodos/response.ts";
 import { SearhProy } from "../../../services/proyectos/searchProy.ts";
 
 export const handler: Handlers = {

@@ -1,0 +1,70 @@
+.registro{
+    @apply
+        animate-fadeIn
+        lg:w-[600px] md:w-1/2 w-full
+        py-4 
+        px-8
+        bg-[#c7c7c7]/50
+        backdrop-blur-xl
+        rounded-xl
+        flex flex-col
+        align-middle items-center
+}
+
+.registro_ti{
+    @apply
+        text-2xl
+        font-bold
+        my-2
+        text-black
+}
+
+.registro_cont_btn{
+    @apply
+        w-full
+        flex
+        flex-col
+        align-middle items-center
+}
+
+.registro_btn{
+    @apply
+        bg-[#658895]
+        text-white
+        hover:bg-[#e4c36f]
+        hover:text-black
+        transition-colors
+        duration-75
+        my-2
+        py-2
+        px-4
+        rounded-lg
+}
+
+.registro_link{
+    @apply
+        text-lg
+        cursor-pointer  
+        hover:underline
+        my-1
+}
+
+.registroAnim{
+    @apply
+        animate-fadeInR
+        lg:w-[600px] md:w-1/2 w-full
+        py-4 
+        px-8
+        bg-[#c7c7c7]/50
+        backdrop-blur-xl
+        rounded-xl
+        flex flex-col
+        align-middle items-center
+}
+
+.UserForm{
+    @apply
+        w-full
+        flex 
+        lg:flex-row md:flex-row flex-col
+}

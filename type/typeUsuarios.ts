@@ -6,7 +6,7 @@ export interface typeArquitectos {
   apellido: string;
   telefono: number;
   correo: string;
-  contra?:string;
+  contra?: string;
 }
 
 export interface typeClientes {
@@ -18,5 +18,22 @@ export interface typeClientes {
   direccion: string;
   telefono: number;
   correo: string;
-  contra?:string;
+  contra?: string;
+}
+
+export interface typeContactos {
+  ci: string;
+  nombre: string;
+  telefono: string;
+  correo: string;
+}
+
+export interface typeMesanje {
+  id: string;
+  codigo: string;
+  correo: string;
+  telefono: string;
+  nombre: string;
+  asunto: string;
+  contenido: string;
 }

@@ -1,16 +1,19 @@
+import { isValidNumber } from "$std/semver/_shared.ts";
 import { db } from "../../database/connect.ts";
 const query = await db();
 
 
 // Proyectos
 export const viewProy = async (codigo?: string, id?: number) => {
+
+  const isUser = isValidNumber(parseInt(codigo ?? "")) ? "cli" : "arq";
   try {
     let queryStr =
       `SELECT id, arq, cli, nomproy, tipproy, iniproy, preproy, depproy, dirproy, imgproy FROM proyectos`;
     const params: (string | number)[] = [];
 
     if (codigo) {
-      queryStr += ` WHERE arq=?`;
+      queryStr += ` WHERE habilitado=1 AND ${isUser}=?`;
       params.push(codigo);
     }
 

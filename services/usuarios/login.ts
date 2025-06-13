@@ -21,45 +21,43 @@ export const loginUser = async (
 };
 
 //login arquitectos real
-const loginArq = async (codigo: string, pass: string) => {
+const loginArq = async (cod: string, pass: string) => {
   try {
-    const user = await (await query).query(
-      "SELECT nombre, apellido, contra FROM arquitectos WHERE codigo=?",
-      [codigo],
+    const user = await query.query(
+      "CALL loginArquitectos(?)",
+      [cod],
     );
-    //console.log("user", user);
-    if (user.length <= 0) return "ERROR. no existe el usuario (ARQUITECTO)";
-    else {
-      // deno-lint-ignore no-explicit-any
-      const passBD = user.map((p: any) => p.contra);
-      const compare = await comparePass(pass, passBD);
+    console.log(user);
 
-      if (!(compare)) return "ERROR. contraseña incorrecta (ARQUITECTO)";
-      else {
-        // deno-lint-ignore no-explicit-any
-        const { nombre, apellido } = user[0] as any;
-        return `${nombre} ${apellido}`;
-      }
-    }
+    if (user.length <= 0) return "ERROR. No existe el usuario o la contraseña es incorrecta";
+
+    const passBD = user[0].contra;
+    const compare = await comparePass(pass, passBD);
+
+    if (!compare) return "ERROR. No existe el usuario o la contraseña es incorrecta";
+
+    const { nombre, apellido } = user[0];
+    return `${nombre} ${apellido}`;
   } catch (error) {
     return `ERROR. en el login apiBuss ${error}`;
   }
 };
 
+
 //login clientes
 const loginCli = async (ci: number, pass: string) => {
   try {
-    const user = await (await query).query(
+    const user = await query.query(
       "SELECT nombre, apellido, contra FROM clientes WHERE ci=?",
       [ci],
     );
-    if (user.length <= 0) return "ERROR. no existe el usuario (CLIENTE)";
+    if (user.length <= 0) return "ERROR. No existe el usuario o la contraseña es incorrecta";
     else {
       // deno-lint-ignore no-explicit-any
       const passBD = user.map((p: any) => p.contra);
       const compare = await comparePass(pass, passBD);
 
-      if (!(compare)) return "ERROR. contraseña incorrecta (CLIENTE)";
+      if (!(compare)) return "ERROR. No existe el usuario o la contraseña es incorrecta";
       else {
         // deno-lint-ignore no-explicit-any
         const { nombre, apellido } = user[0] as any;
